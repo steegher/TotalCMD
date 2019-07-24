@@ -1,0 +1,20 @@
+; English
+[0409]
+btn_ok=OK
+btn_cancel=Cancel
+btn_help=Help
+btn_apply=Apply
+theme_group1=Information on the scheme:
+theme_group2=Color scheme:
+theme_group3=Example:
+theme_author=Author:
+theme_feedback=Feedback:
+theme_description=Description:
+theme_not_specified=Not specified
+theme_user=User scheme
+theme_user_desc=It is not translated
+error_msg1=It is not translated
+ftype_link=Color groups
+ftype_header=Color groups (types of files)
+ftype_close=Close
+ftype_invalid=In the chosen scheme there are no color groups

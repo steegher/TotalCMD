@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<settings>
+	<lister_plugin fontColor="0" bgColor="16777215" fontSize="10" fontFx="0" font="Courier New" />
+	<gui lang="ru" />
+	<debug logLevel="0" />
+	<path path_7z_dll="" path_7zG_exe="" />
+	<path64bit path_7zG_exe="" path_7z_dll="" />
+	<compression save="1" sfx="7z.sfx" updateSfx="0" askByContent="0" askByContentTimeout="1" alwaysWait7zip="0" extractToTempCount="20" deleteToRecycleBin="1" keySimpleMode="-1">
+		<settings_7zip Level="0" Archiver="" ShowPassword="0" EncryptHeaders="0">
+			<Options />
+		</settings_7zip>
+	</compression>
+	<passwords save="0" />
+	<formats save="1">
+		<format description="zip" guid="{23170F69-40C1-278A-1000-000110010000}">
+			<ext val="docx" />
+			<ext val="jar" />
+			<ext val="ods" />
+			<ext val="odt" />
+			<ext val="xlsx" />
+			<ext val="xpi" />
+			<ext val="zip" />
+		</format>
+		<format description="bzip2" guid="{23170F69-40C1-278A-1000-000110020000}">
+			<ext val="bz2" />
+			<ext val="bzip2" />
+			<ext val="tbz" />
+			<ext val="tbz2" />
+		</format>
+		<format description="Rar" guid="{23170F69-40C1-278A-1000-000110030000}">
+			<ext val="r00" />
+			<ext val="rar" />
+		</format>
+		<format description="Arj" guid="{23170F69-40C1-278A-1000-000110040000}">
+			<ext val="arj" />
+		</format>
+		<format description="Z" guid="{23170F69-40C1-278A-1000-000110050000}">
+			<ext val="taz" />
+			<ext val="z" />
+		</format>
+		<format description="Lzh" guid="{23170F69-40C1-278A-1000-000110060000}">
+			<ext val="lha" />
+			<ext val="lzh" />
+		</format>
+		<format description="7z" guid="{23170F69-40C1-278A-1000-000110070000}">
+			<ext val="7z" />
+		</format>
+		<format description="Cab" guid="{23170F69-40C1-278A-1000-000110080000}">
+			<ext val="cab" />
+		</format>
+		<format description="Nsis" guid="{23170F69-40C1-278A-1000-000110090000}" />
+		<format description="lzma" guid="{23170F69-40C1-278A-1000-0001100A0000}">
+			<ext val="lzma" />
+		</format>
+		<format description="lzma86" guid="{23170F69-40C1-278A-1000-0001100B0000}">
+			<ext val="lzma86" />
+		</format>
+		<format description="xz" guid="{23170F69-40C1-278A-1000-0001100C0000}">
+			<ext val="txz" />
+			<ext val="xz" />
+		</format>
+		<format description="Ppmd" guid="{23170F69-40C1-278A-1000-0001100D0000}">
+			<ext val="pmd" />
+		</format>
+		<format description="TE" guid="{23170F69-40C1-278A-1000-000110CF0000}">
+			<ext val="te" />
+		</format>
+		<format description="UEFIc" guid="{23170F69-40C1-278A-1000-000110D00000}">
+			<ext val="scap" />
+		</format>
+		<format description="UEFIs" guid="{23170F69-40C1-278A-1000-000110D10000}" />
+		<format description="SquashFS" guid="{23170F69-40C1-278A-1000-000110D20000}">
+			<ext val="squashfs" />
+		</format>
+		<format description="CramFS" guid="{23170F69-40C1-278A-1000-000110D30000}">
+			<ext val="cramfs" />
+		</format>
+		<format description="APM" guid="{23170F69-40C1-278A-1000-000110D40000}" />
+		<format description="MsLZ" guid="{23170F69-40C1-278A-1000-000110D50000}" />
+		<format description="FLV" guid="{23170F69-40C1-278A-1000-000110D60000}">
+			<ext val="flv" />
+		</format>
+		<format description="SWF" guid="{23170F69-40C1-278A-1000-000110D70000}">
+			<ext val="swf" />
+		</format>
+		<format description="SWFc" guid="{23170F69-40C1-278A-1000-000110D80000}">
+			<ext val="swf" />
+		</format>
+		<format description="NTFS" guid="{23170F69-40C1-278A-1000-000110D90000}">
+			<ext val="img" />
+			<ext val="ntfs" />
+		</format>
+		<format description="FAT" guid="{23170F69-40C1-278A-1000-000110DA0000}">
+			<ext val="fat" />
+			<ext val="img" />
+		</format>
+		<format description="MBR" guid="{23170F69-40C1-278A-1000-000110DB0000}">
+			<ext val="mbr" />
+		</format>
+		<format description="VHD" guid="{23170F69-40C1-278A-1000-000110DC0000}">
+			<ext val="vhd" />
+		</format>
+		<format description="PE" guid="{23170F69-40C1-278A-1000-000110DD0000}">
+			<ext val="dll" />
+			<ext val="exe" />
+			<ext val="sys" />
+		</format>
+		<format description="ELF" guid="{23170F69-40C1-278A-1000-000110DE0000}" />
+		<format description="MachO" guid="{23170F69-40C1-278A-1000-000110DF0000}" />
+		<format description="Udf" guid="{23170F69-40C1-278A-1000-000110E00000}">
+			<ext val="img" />
+			<ext val="iso" />
+		</format>
+		<format description="Xar" guid="{23170F69-40C1-278A-1000-000110E10000}">
+			<ext val="xar" />
+		</format>
+		<format description="Mub" guid="{23170F69-40C1-278A-1000-000110E20000}" />
+		<format description="HFS" guid="{23170F69-40C1-278A-1000-000110E30000}">
+			<ext val="hfs" />
+		</format>
+		<format description="Dmg" guid="{23170F69-40C1-278A-1000-000110E40000}">
+			<ext val="dmg" />
+		</format>
+		<format description="Compound" guid="{23170F69-40C1-278A-1000-000110E50000}">
+			<ext val="doc" />
+			<ext val="msi" />
+			<ext val="msp" />
+			<ext val="ppt" />
+			<ext val="xls" />
+		</format>
+		<format description="wim" guid="{23170F69-40C1-278A-1000-000110E60000}">
+			<ext val="swm" />
+			<ext val="wim" />
+		</format>
+		<format description="Iso" guid="{23170F69-40C1-278A-1000-000110E70000}">
+			<ext val="img" />
+			<ext val="iso" />
+		</format>
+		<format description="Chm" guid="{23170F69-40C1-278A-1000-000110E90000}">
+			<ext val="chi" />
+			<ext val="chm" />
+			<ext val="chq" />
+			<ext val="chw" />
+			<ext val="hxi" />
+			<ext val="hxq" />
+			<ext val="hxr" />
+			<ext val="hxs" />
+			<ext val="hxw" />
+			<ext val="lit" />
+		</format>
+		<format description="Split" guid="{23170F69-40C1-278A-1000-000110EA0000}">
+			<ext val="001" />
+		</format>
+		<format description="Rpm" guid="{23170F69-40C1-278A-1000-000110EB0000}">
+			<ext val="rpm" />
+		</format>
+		<format description="Deb" guid="{23170F69-40C1-278A-1000-000110EC0000}">
+			<ext val="deb" />
+		</format>
+		<format description="Cpio" guid="{23170F69-40C1-278A-1000-000110ED0000}">
+			<ext val="cpio" />
+		</format>
+		<format description="tar" guid="{23170F69-40C1-278A-1000-000110EE0000}">
+			<ext val="tar" />
+		</format>
+		<format description="gzip" guid="{23170F69-40C1-278A-1000-000110EF0000}">
+			<ext val="gz" />
+			<ext val="gzip" />
+			<ext val="tgz" />
+			<ext val="tpz" />
+		</format>
+	</formats>
+	<formatsDisabled />
+</settings>

@@ -1,0 +1,61 @@
+//ПРИМЕР 1 - Компилирует растровое изображение bmp, диалоговое окно и ресурс информации о версии, демонстрирует инструкцию include, специальные символы и объединение строк.
+
+100 BITMAP "sample1.bmp"
+
+//sample1.inc содержит несколько строковых констант, необходимых для диалога, а также содержит вложенный include к sample1.h, который содержит идентификаторы управления. 
+//Я делал это для простоты, чтобы показать, что вложения возможны. Я не утверждаю, что это, хороший способ сделать что-то. :) просто пример
+#INCLUDE sample1.inc
+
+//Демонстрация Заголовка диалогового окна и текста 2-6 элементов управления
+//способность компилятора анализировать escape-символы и объединять строки
+//Примечание: нет никакой разницы между \xFFFF и \uFFFF. Оба принимают любое шестнадцатеричное значение слова и преобразуют его в символ (например, \u9 == \t).
+
+ABOUT DIALOGEX 0, 0, 179, 109
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION IDS_APP_TITLE + " - About"
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+FONT 9, "Arial"
+{
+   CONTROL 100, 100, STATIC, SS_BITMAP | WS_CHILD | WS_VISIBLE | WS_GROUP, 16, 12, 54, 54 
+   CONTROL IDS_APP_TITLE, 101, STATIC, SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 84, 11, 91, 18 
+   CONTROL "Version " + IDS_DOTTED_VER_NO, -1, STATIC, SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 84, 30, 90, 11
+   CONTROL "Angus Johnson \u2764", -1, STATIC, SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 84, 39, 90, 11
+   CONTROL "Copyright \xA9 1998-2018", -1, STATIC, SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 84, 50, 90, 11 
+   CONTROL "<a href=\"http://www.angusj.com\">http://www.angusj.com</a>", 102, "SysLink", WS_CHILD | WS_VISIBLE | WS_GROUP, 85, 59, 90, 11 , 0x00000000
+   CONTROL "", -1, STATIC, SS_ETCHEDHORZ | WS_CHILD | WS_VISIBLE | WS_GROUP, 0, 80, 179, 1 
+   CONTROL "hidden", -1, STATIC, SS_LEFT | WS_CHILD | NOT WS_VISIBLE, 16, 90, 26, 11 
+   CONTROL "&OK", 103, BUTTON, BS_DEFPUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 115, 87, 58, 16 , 0x00000000
+}
+
+//Для объединения строк обычно требуется плюс ( + ) между строками.
+//Однако если ни каких инструкций в строке не будет определено
+//тогда допускается определение объединения строк (без знака +). 
+//Это показано в первом StringFileInfo VALUE инструкции ниже.
+
+1 VERSIONINFO
+FILEVERSION MAJOR_VERSION,MINOR_VERSION,RELEASE_NUMBER,BUILD_NUMBER
+PRODUCTVERSION MAJOR_VERSION,MINOR_VERSION,RELEASE_NUMBER,BUILD_NUMBER
+FILEOS 0x4
+FILETYPE 0x1
+{
+BLOCK "StringFileInfo"
+{
+	BLOCK "040904b0"
+	{
+		VALUE "Comments", IDS_APP_TITLE " - no nags, no ads and fully functional"
+		VALUE "FileDescription", IDS_APP_TITLE
+		VALUE "InternalName", IDS_APP_NAME
+		VALUE "ProductName", IDS_APP_NAME
+		VALUE "CompanyName", IDS_APP_AUTHOR
+		VALUE "FileVersion", IDS_DOTTED_VER_NO
+		VALUE "ProductVersion", IDS_DOTTED_VER_NO
+		VALUE "LegalCopyright", "Copyright \xA9 1998-2018 "  + IDS_APP_AUTHOR
+		VALUE "OriginalFilename", IDS_APP_NAME
+	}
+}
+
+BLOCK "VarFileInfo"
+{
+	VALUE "Translation", 0x0409 0x04B0  
+}
+}

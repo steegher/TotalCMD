@@ -1,0 +1,1 @@
+start uTorrent.exe /RECOVER

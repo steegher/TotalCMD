@@ -1,0 +1,10 @@
+1.11
+----
+FIXED		Bug in field enumeration
+REMOVED		Currently not working field "Permissions"
+
+
+1.10
+----
+
+ADDED		64 bit support

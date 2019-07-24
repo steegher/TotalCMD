@@ -1,0 +1,599 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Services2 - File-system plugin for Total Commander</title>
+  <meta name="author" content="Dalai">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="icon" type="image/x-icon" href="./res/Fatcow-Farm-Fresh-Cog.ico">
+  <link href="./res/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <div id="content">
+  <h1>Services2</h1>
+    Services2 is a file-system plugin that can list, control and manage the services registered in the system.
+    <h2>Contents</h2>
+    <ol>
+        <li class="nav"><a href="#features">General features</a></li>
+        <li class="nav"><a href="#sysreqs">System Requirements</a></li>
+        <li class="nav"><a href="#comparison">Comparison with Services 2.4</a>
+          <ol>
+              <li class="nav"><a href="#advantages">Advantages</a></li>
+              <li class="nav"><a href="#disadvantages">Disadvantages</a></li>
+          </ol>
+        </li>
+        <li class="nav"><a href="#settings">Plugin settings</a>
+          <ol>
+              <li class="nav"><a href="#settingslocation">Location of plugin settings file</a>
+              <li class="nav"><a href="#settingsdetail">The settings in detail</a>
+          </ol>
+        </li>
+        <li class="nav"><a href="#remotemgmt">Remote service management</a>
+        </li>
+        <li class="nav"><a href="#exttools">Internal and external tools</a>
+          <ol>
+              <li class="nav"><a href="#toolscfg">How to configure external tools</a></li>
+              <li class="nav"><a href="#toolskeys">The keys in detail</a></li>
+              <li class="nav"><a href="#keyboardshortcuts">Keyboard shortcuts</a></li>
+              <li class="nav"><a href="#x64note">An important note on 64 bit systems</a></li>
+              <li class="nav"><a href="#xp64note">A special note on Windows XP x64 Edition</a></li>
+          </ol>
+        </li>
+        <li class="nav"><a href="#issueslimitations">Known Issues and limitations</a>
+          <ol>
+            <li class="nav"><a href="#knownissues">Known issues</a></li>
+            <li class="nav"><a href="#limitations">Limitations of remote computer management</a></li>
+          </ol>
+        </li>
+        <li class="nav"><a href="#faq">Frequently Asked Questions</a></li>
+        <li class="nav"><a href="#license">License</a></li>
+        <li class="nav"><a href="#thanks">Thanks to</a></li>
+        <li class="nav"><a href="#contact">Contact</a></li>
+    </ol>
+
+    <hr size="1" noshade>
+
+
+    <h2>1. General features<a name="features"></a></h2>
+      <ul>
+        <li>List services registered in the system</li>
+        <li>Control service states</li>
+        <li>Edit service properties</li>
+        <li>Delete services from the system</li>
+        <li>Analyze service executables with internal and external tools (version 0.5.0 or higher)</li>
+        <li>Manage services on remote systems (version 0.6.0 or higher)</li>
+        <li>Show service PIDs (process IDs) (version 0.8.0 or higher)</li>
+      </ul>It is an alternative to the old <a href="http://www.totalcmd.net/plugring/services.html">Services plugin (Version 2.4)</a>
+      written by Serge Kandakov (KaSA).
+
+
+    <h2>2. System Requirements<a name="sysreqs"></a></h2>
+      <ul>
+          <li>Windows 2000 or later, both 32 and 64 bit</li>
+          <li>Total Commander 7.50 or later, both 32 and 64 bit.</li>
+      </ul>
+
+
+    <h2>3. Comparison with Services 2.4<a name="comparison"></a></h2>
+      <p>Services2 has some advantages over Services 2.4 but due to its early development state it has some disadvantages, too.
+      Note that some features which Services 2.4 has will not be implemented in this plugin.</p>
+
+    <h3>3.1. Advantages<a name="advantages"></a></h3>
+    <h4>Things that the old Services plugin can't or doesn't do</h4>
+      <ul>
+          <li>Show correct executable information in the file list of Total Commander (32 bit) on Windows 64 bit, i.e. file date/time and sizes.
+          Services 2.4 always shows the information of the files in C:\Windows\SysWow64 instead of C:\Windows\system32.</li>
+          <li>Unicode capable (this should be implemented correctly).</li>
+          <li>64 Bit version of this plugin to use in Total Commander x64.</li>
+          <li>Translation to other languages possible.</li>
+          <li>Support for custom columns, including default view.</li>
+          <li>Show services in Total Commander's file list in all states, not just running, stopped and paused but all transitional states
+          (pause/continue/start/stop pending) as well.</li>
+          <li>Additional startup type "Automatic (Delayed)" on Vista and higher.</li>
+          <li>Delete a service by pressing F8 or DEL in Total Commander's file list. This feature can be turned off. See section <a href="#settings">Plugin settings</a>.</li>
+          <li>Show some additional information when pressing F3 on a service:
+              <ul>
+                  <li>startup type</li>
+                  <li>if a service is allowed to interact with the user's desktop</li>
+                  <li>if a service uses a shared process or its own</li>
+                  <li>name of the account that the service process will be logged on as</li>
+              </ul>
+          </li>
+          <li>Show driver services as such in the dependencies/dependents trees.</li>
+          <li>Show load order groups in the dependencies tree (but not their members).</li>
+          <li>Show warning if not all of the service's dependencies could be retrieved, e.g. when the user executing the plugin doesn't
+          have administrative privileges that are necessary to get the dependents of some services. Namely these are DcomLaunch, RpcSs,
+          RpcEptMapper and pla (on Windows 7/8),  but there may be other services. Services 2.4 just shows "No dependencies found" in
+          this case which isn't necessarily true.</li>
+      </ul>
+
+    <h3>3.2. Disadvantages<a name="disadvantages"></a></h3>
+    <h4>Things this plugin can't do, and in some cases never will</h4>
+      <ul>
+          <li>"Log on as" management is available but might be not as stable as I want it to be.<br>
+          OK, the dialog's controls are more stable in this plugin as there can't be more than one radio button checked/marked
+          simultaneously like in Services 2.4 ;).</li>
+          <li>No feature to start or stop a service directly in TC's file panel with a hotkey like F5 or F6. Note: This feature
+          never worked on the systems I tested Services 2.4 on.</li>
+          <li>No "Recovery" tab in the service's properties. This will most probably never be implemented (too much effort for
+          very little benefit).</li>
+          <li>No feature to add any executable as service. It's not planned to implement this.</li>
+      </ul>
+
+
+    <h2>4. Plugin settings<a name="settings"></a></h2>
+      <p>You can change most of the options in the plugin's settings dialog (Alt+Enter on the "Services2" entry in TC's Network Neighborhood).<br></p>
+    <h3>4.1. Location of plugin settings file<a name="settingslocation"></a></h3>
+      <p>If you want to change any plugin settings manually you can use either</p>
+      <p><b>a)</b> Services2.ini in the plugin's directory, or</p>
+      <b>b)</b> fsplugin.ini in the directory where wincmd.ini is located (default).<br>
+      <p>Option a) is good for portable mode, option b) is useful on systems where Total Commander is installed in a directory where
+      users can't write to (like %ProgramFiles%).</p>
+      <p>
+      <b>Important</b>: If Services2.ini exists in the plugin's directory it is preferred over fsplugin.ini!</p>
+      <p>The full path of the INI file currently in use is shown in the settings dialog. As of version 0.5.0 there is a button
+      that allows the user to open the plugin settings file in the editor defined in TC, so it can be edited directly without the
+      need to navigate to it by hand.</p>
+    <h3>4.2. The settings in detail<a name="settingsdetail"></a></h3>
+    <p>The settings are explained in the Services2.sample.ini file, but they're listed here for the sake of completeness.</p>
+      <p><b>Section [Services2]</b></p>
+
+      <table width="100%" border="1" cellpadding="0" cellspacing="2">
+       <tr>
+         <th scope="col" width="28%">Setting and default</th>
+         <th scope="col">Description</th>
+       </tr>
+       <tr>
+         <td>ShowState = 1</td>
+         <td><b class="col">1</b> - Show the service's states in the extension column of TC's file panel.<br>
+             <b class="col">0</b> - Don't show the service's states.</td>
+       </tr>
+       <tr>
+         <td>ClassicTreeStyle = 1</td>
+         <td><b class="col">1</b> - Use classic tree style and buttons (plus/minus signs instead of triangles) in the dependencies/dependents trees
+         of the service properties dialog on Windows Vista and higher<br>
+             <b class="col">0</b> - Use the style defined by the OS.</td>
+       </tr>
+       <tr>
+         <td>AllowDeleteInPanel = 1</td>
+         <td><b class="col">1</b> - Allow deletion of services in TC's file panel<br>
+             <b class="col">0</b> - Disable deletion of services in TC's file panel. Note that TC will ask for confirmation if F8/DEL is pressed
+         in the file list, but the plugin will not actually delete the service. Also note that services can still be deleted via the service
+         properties dialog.</td>
+       </tr>
+       <tr>
+         <td>LoadCustomColumns = 1</td>
+         <td><b class="col">1</b> - Automatically load custom columns view when entering the plugin. Note that this setting only affects
+         the default custom columns view which this plugin provides! More specifically the setting controls whether the plugin
+         reports a custom columns default view to TC or not.<br>
+             <b class="col">0</b> - Don't report a default view to TC. See <a href="#faq">FAQ section</a> on how to completely disable custom
+         columns view</td>
+       </tr>
+       <tr>
+         <td>Language = English.lng</td>
+         <td>Specifies the language file to use by the plugin. Note: Strings missing in the specified language file are replaced
+         with default English ones!</td>
+       </tr>
+       <tr>
+         <td>AddTxtExtensionOnDownload = 0</td>
+         <td><b class="col">1</b> - Append an additional '.txt' extension when a service "file" is downloaded. This is a way to control
+         whether the service "files" are loaded into TC's Lister plugins (if any are installed).<br>
+             <b class="col">0</b> - Don't append '.txt' extension.</td>
+       </tr>
+       <tr>
+         <td>AddSvcNameToDependencyTrees = 1</td>
+         <td><b class="col">1</b> - Service properties dialog: Add service names to dependencies/dependents trees in brackets. Note that the
+         display name of dependent services is always shown (of course).<br>
+             <b class="col">0</b> - Don't add service names to the trees.</td>
+       </tr>
+       <tr>
+         <td>ShowSvcNameAsName = 0</td>
+         <td><b class="col">1</b> - Show the service's names instead of display names in TC's file panel.<br>
+             <b class="col">0</b> - Show display names in TC's file panel.</td>
+       </tr>
+       <tr>
+         <td>EnableRemoteManagement = 1</td>
+         <td><b class="col">1</b> - Enable management of services on remote computers, and show the "Remote Computer" subdir in the plugin's root.<br>
+             <b class="col">0</b> - Disable remote computer management (hide the "Remote Computer" subdir).</td>
+       </tr>
+       <tr>
+         <td>Monitor = 0</td>
+         <td><b class="col">0</b> - Show all plugin dialogs/windows on the active monitor, i.e. the monitor TC is on.<br>
+             <b class="col">1..4</b> - Show all dialogs on the primary, secondary, tertiary or quaternary monitor, respectively.<br>
+             Note: If you specify an invalid monitor, the value will be reset to 0, i.e. the active monitor will be used instead.
+         </td>
+       </tr>
+       <tr>
+         <td>DisablePanelAutoRefresh = 0</td>
+         <td><b class="col">0</b> - Enable the automatic refresh that is done every time the service properties dialog is closed.
+             This is the behavior of previous plugin versions.<br>
+             <b class="col">1</b> - Disable the automatic refresh when the service properties dialog is closed by Cancel, ESC key
+             or the system methods like Alt+F4 and the X in the upper right corner. This avoids unnecessary refreshs of TC's panel
+             which is especially helpful when there are a lot of custom columns shown. Note that this setting doesn't disable
+             refreshs when there are changes made to a service, i.e. the service properties dialog is closed with the OK button
+             (or ENTER).</td>
+       </tr>
+       <tr>
+         <td>RemoteComputerList = ""</td>
+         <td>Specifies a list of computers, separated by a pipe (|), that will be shown in the "Remote Computer" subdir.</td>
+       </tr>
+      </table>
+
+      <br>
+      <p><b>Section [Services2.Tools]</b></p>
+      <table width="100%" border="1" cellpadding="0" cellspacing="2">
+       <tr>
+         <th scope="col" width="20%">Setting and default</th>
+         <th scope="col">Description</th>
+       </tr>
+       <tr>
+         <td>ShowIcons = 1</td>
+         <td><b class="col">1</b> - Show icons in the list of external tools. This might slow down the list's opening operation because the plugin
+         extracts the icon of every external tool. Disable this setting if that's the case.<br>
+             <b class="col">0</b> - Don't show icons in the list of external tools.</td>
+       </tr>
+       <tr>
+         <td>AutoDetectArch = 1</td>
+         <td><b class="col">1</b> - Automatically determine the architecture of all external tools. This adds some comfort to external
+         tools management without having to check whether an executable is x86 or x64. However, it requires the plugin to
+         open every external tool's executable file which can cause slowdowns by anti-virus software and the like.<br>
+              <b class="col">0</b> - Disable automatic architecture detection. If this feature is disabled, the architecture of every external tools must
+         be set in Services2.Tools section using the x64 key (see section <a href="#toolskeys">The keys in detail</a>)</td>
+        </tr>
+        <tr>
+          <td>I1_Shortcut = A+ENTER
+              I2_Shortcut = F3<br>
+              I3_Shortcut = ""<br>
+              I4_Shortcut = S+F3
+          </td>
+          <td>(Pre-defined) keyboard shortcuts for internal tools.<br>
+              I1 - View executable properties<br>
+              I2 - View executable in Lister<br>
+              I3 - View service DLL properties<br>
+              I4 - View service DLL in Lister<br>
+              The value has the same format as for the shortcuts for external tools, as detailed in section
+              <a href="#keyboardshortcuts">Keyboard shortcuts</a>. To disable a shortcut just set its value to an empty string (with or without quotes).
+          </td>
+        </tr>
+      </table>
+
+
+    <h2>5. Remote service management<a name="remotemgmt"></a></h2>
+      <p>For service management on remote systems to work correctly, several conditions have to be met.</p>
+      <p>The credentials of the local and remote users must match. This is true for every Windows version, local
+         and remote. See section <a href="#limitations">Limitations of remote computer management</a> for more details.
+      </p>
+      <p>Managing services on a remote Windows system running Vista or later is much more challenging, when done on a
+         standard system which has UAC (User Account Control) and Windows Firewall enabled, and where the user is a member
+         of the administrators group but TC - and thus the Services2 plugin - is not running elevated (as administrator).
+      </p>
+      <p>For some reason Vista and later require administrator privileges on the remote system, even to list the services!
+         Additionally, a system policy is required that tells the system to create an elevated instead of a filtered access
+         token. See Microsoft KB article 951016 <a href="https://support.microsoft.com/en-us/kb/951016">Description of User
+         Account Control and remote restrictions in Windows Vista</a> for a detailed explanation.
+         You can either use the LocalAccountTokenFilterPolicy.reg file shipped with this plugin, or add the registry
+         value manually to the remote system:
+         <span class="codebox" style="width:60%; display:block; margin-top:0.5em">
+         [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]<br>
+         "LocalAccountTokenFilterPolicy"=dword:00000001
+         </span>
+      </p>
+      <p>The aforementioned restrictions can be circumvented by either disabling UAC on the remote system, or using an account
+         that's not subject to UAC approval mode on the remote system, like the built-in administrator account.
+      </p>
+      <p>Additionally, the Windows Firewall - if enabled - must allow remote service management, which it doesn't by default.
+         Either start the Windows Firewall MMC snap-in (WF.msc), and enable the rules of the group "Remote Service Management"
+         there. Or use the WinFirewall*.cmd scripts shipped with this plugin.
+      </p>
+      <p>There's another factor to consider when managing services on Vista or later from a system running XP or older,
+         or vice versa. Due to the way remote service management works, either a SMB1 server or SMB1 client is required on
+         Vista or later to allow RPC (remote procedure call) access to the remote system. Since Microsoft and others are
+         deprecating SMB1 with Windows 10, even as far as automatically uninstalling SMB1 client and server protocols "when
+         they're not needed", this issue gets increasingly important.<br>
+         When managing services on Vista or later from XP or older, the <b>remote</b> system must have a SMB1 server installed
+         and enabled! When managing services on XP or older from Vista or later, the <b>local</b> system must have a SMB1 client
+         installed and enabled!<br>
+         See Microsoft KB article 2696547 <a href="https://support.microsoft.com/en-us/help/2696547">
+         How to detect, enable and disable SMBv1, SMBv2, and SMBv3 in Windows and Windows Server</a> for more information.<br>
+         There's also a helper script available to enable SMB1 server in the \remote subdirectory.
+      </p>
+
+
+    <h2>6. Internal and External Tools<a name="exttools"></a></h2>
+      <p>As of version 0.5.0 there is support for internal and external tools. With this feature you can</p>
+      <ul class="small">
+        <li>view the service executable's properties</li>
+        <li>view the service executable in TC's Lister, including its plugins like
+          <a href="http://www.totalcmd.net/plugring/fileinfo.html">FileInfo</a> or <a href="http://www.totalcmd.net/plugring/peviewer.html">PEViewer</a></li>
+        <li>open the service executable in any external tool like anti-virus scanner, the
+          <a href="https://www.virustotal.com/documentation/desktop-applications/">VirusTotal Uploader</a>, a web browser,
+          a hex editor, a debugger and so on</li>
+      </ul>
+      <p>This greatly simplifies the analysis of (unknown) services and their executables, especially such from vendors that are unable
+      or unwilling to give their services meaningful names and/or descriptions.</p>
+
+    The first two items mentioned above (properties and TC Lister) are internal tools and always available - provided that the
+    service executable is found, of course.
+
+    <h3>6.1. How to configure external tools<a name="toolscfg"></a></h3>
+      <p>Create a new section named <b>[Services2.Tools]</b> in the plugin's INI file. See section <a href="#settings">Plugin settings</a>
+      above on how to find the correct INI file.</p>
+
+      <p>There can be several keys in this section:
+        <p class="codebox" style="width:25%">
+        n_Name<br>
+        n_File<br>
+        n_Params<br>
+        n_x64<br>
+        n_WWW<br>
+        n_Shortcut</p>
+      where <b>n</b> is a number from 1 to 15 (currently).
+
+      <p>The values of some keys can contain the following placeholders:
+        <table border="1" width="65%">
+         <tr><th scope="col">Placeholder</th>
+             <th scope="col">is replaced with</th>
+             <th scope="col">Valid in key(s)</th>
+         </tr>
+         <tr>
+           <td>{FileName}</td>
+           <td>the fully-qualified path of the service executable</td>
+           <td>Params only</td>
+         </tr>
+         <tr>
+           <td>{SvcDll}</td>
+           <td>the fully-qualified path of the service DLL, if any</td>
+           <td>Params only</td>
+         </tr>
+         <tr>
+           <td>{FileNameOnly}</td>
+           <td>the file name only, i.e. path removed</td>
+           <td>Params and WWW</td>
+         </tr>
+         <tr>
+           <td>{SvcName}</td>
+           <td>the service name</td>
+           <td>WWW only</td>
+         </tr>
+        </table>
+      The placeholders are case-sensitive, i.e. {filename} is NOT replaced!
+      <p>Quotes are automatically added to the File key value only, so they must be set explicitly in all other key values if
+      they contain spaces!</p>
+
+    <h3>6.2. The keys in detail<a name="toolskeys"></a></h3>
+      <table border="1">
+       <tr>
+        <th scope="row" width="10%">Name</th>
+        <td>A string which will be shown in the list of external tools. If it's empty the value of <b class="col">File</b> is used
+        instead (path removed, i.e. file name only). You can use an ampersand here to manually define a character that will be used as
+        keyboard hotkey, e.g. "&amp;Firefox" will create an item that can be called by pressing "f" when the list of external tools
+        is opened.</td>
+         </tr>
+         <tr>
+          <th scope="row">File</th>
+          <td>The path to the external tool. It can contain either a fully-qualified path or a simple file name that is located
+          somewhere in the %PATH%. It can also contain environment variables like %ProgramFiles% or %SystemRoot% and so on.</td>
+         </tr>
+         <tr>
+          <th scope="row">Params</th>
+          <td>A string that contains any command-line parameters for <b class="col">File</b>. The value can contain environment
+          variables as well.</td>
+         </tr>
+         <tr>
+          <th scope="row">x64</th>
+          <td>A Bool (either 0 or 1) that defines the architecture of <b class="col">File</b>.<br>
+          <b>0</b> defines that File is a 32 bit executable<br>
+          <b>1</b> defines that File is a 64 bit executable<br>
+          Please note that this key is not required as long as AutoDetectArch is enabled in [Services2.Tools] section.</td>
+         </tr>
+         <tr>
+          <th scope="row">WWW</th>
+          <td>A string that can contain a web address that will be opened in the system's default web browser. Characters forbidden
+          in URLs will be replaced by %hexvalue! This applies to the placeholders only, not the whole WWW string, of course.</td>
+         </tr>
+         <tr>
+          <th scope="row">Shortcut</th>
+          <td>A string that can contain any shortcut which is assigned to this external tool. Shortcuts allow quick access to internal
+          and external tools using the keyboard. They are useful if you don't want to use the small button to open the list of external
+          tools, too.<br>
+          See section <a href="#keyboardshortcuts">Keyboard shortcuts</a> for details on the string's format and supported keys and
+          modifiers.</td>
+        </tr>
+      </table>
+    <p>If <b>File</b> is not found at runtime the item of this external tool will be disabled. The minimal set of keys required for a
+    working external tool consists of <b>Name</b> and <b>WWW</b> or <b>File</b> and <b>Params</b>.</p>
+    <p>See Services2.sample.ini, section [Services2.Tools], for some examples.</p>
+
+    <h3>6.3. Keyboard shortcuts<a name="keyboardshortcuts"></a></h3>
+    <p>Supported modifiers: Alt, Shift, Ctrl<br>
+    Supported keys:</p>
+    <ul class="small">
+      <li class="nav">F1 through F12</li>
+      <li class="nav">A through Z</li>
+      <li class="nav">0 through 9</li>
+      <li class="nav">Special keys: ENTER, ESC, BACK (Backspace), TAB, SPACE, PGUP/PGDN (Page Up/Down), END, HOME,
+      LEFT/RIGHT/UP/DOWN, INS (Insert), DEL (Delete), PAUSE, NUM+, NUM-, NUM*, NUM/</li>
+    </ul>
+    The syntax is the same as in TC itself, for example "CA+F5" means Ctrl+Alt+F5. See section "Settings in the file
+    wincmd.ini" of TC's help.
+    <p>For internal tools there are some shortcuts pre-defined and assigned to the following functions:</p>
+    <ul class="small">
+       <li class="nav">F3 - View executable in Lister</li>
+       <li class="nav">Alt+Enter - Show executable properties</li>
+       <li class="nav">Shift+F3 - View service DLL in Lister</li>
+    </ul>
+    To disable or change them, see section <a href="#settingsdetail">The settings in detail</a>, INI section [Services2.Tools].
+
+    <h3>6.4. An important note on 64 bit systems<a name="x64note"></a></h3>
+    <p>You may have wondered why there is an x64 key and the AutoDetectArch setting which the plugin uses to determine the
+    architecture of external tools.</p>
+
+    <p>All 32 bit applications are subject to file-system redirection because of WOW64. There are numerous articles on the
+    internet about this topic, see for example <a href="http://en.wikipedia.org/wiki/WoW64">Wikipedia</a> for an outline.
+    When a 32 bit application accesses %SystemRoot%\system32 it is redirected to %SystemRoot%\SysWOW64 by the system.</p>
+
+    <p>Many service executables are located in the %SystemRoot%\system32 directory and the service's configuration points to
+    this path in such cases. Now, with that in mind, what would happen if a 32 bit external tool is launched with
+    "%SystemRoot%\system32\svchost.exe" as parameter? It would load the "wrong" file, i.e. %SystemRoot%\SysWOW64\svchost.exe.
+    There are even cases where there's no file with the same name in %SystemRoot%\SysWOW64 but only %SystemRoot%\system32
+    (e.g. lsass.exe), so 32 bit external tools would not be able to load the service executable at all.</p>
+
+    <p>Therefore Services2 replaces "%SystemRoot%\system32" with "%SystemRoot%\SysNative" in the paths of all service
+    executables if the external tool's executable is a 32 bit binary (unless the service is a WOW64 service). Furthermore,
+    Services2 replaces "%SystemRoot%\system32" with "%SystemRoot%\SysWOW64" in the paths of all service executables if the
+    service is a WOW64 service and the external tool's executable is a 64 bit binary.</p>
+
+    <p>With this approach all internal and external tools always load the correct file, regardless of the architecture of TC,
+    this plugin, the external tool or the service itself.</p>
+
+    <h3>6.5. A special note on Windows XP x64 Edition<a name="xp64note"></a></h3>
+      <p>By default, there is no %SystemRoot%\SysNative pseudo-directory available for 32 bit applications on this OS. That may
+      result in non-working internal and external tools. You have two options here:</p>
+      <ul>
+        <li>Get a <a href="http://support.microsoft.com/kb/942589">patch from Microsoft</a><br>
+           Unfortunately this patch is NOT publicly available. There may be other sources for this hotfix, but you don't want to
+           install patches from an unknown source, do you?
+        </li>
+        <li>Create an NTFS junction from %SystemRoot%\system32 to %SystemRoot%\SysNative. You can do this with tools like
+          <a href="http://technet.microsoft.com/en-us/sysinternals/bb896768.aspx">Sysinternals Junction</a> or
+          <a href="http://www.totalcmd.net/plugring/ntfslinks.html">NTFS Links</a>
+        </li>
+      </ul>
+      <p>Sysinternals Junction:</p>
+      <ol>
+        <li>Launch a 64 bit command prompt (CMD) and navigate to the folder where junction.exe is located</li>
+        <li>type "junction %SystemRoot%\SysNative %SystemRoot%\System32" (without the quotes) and hit Enter</li>
+        <li>the tool should say something like
+        <p class="codebox" style="width:35%">Created: C:\WINDOWS\SysNative<br>
+        Targetted at: C:\WINDOWS\system32</p></li>
+      </ol>
+      <p>NTFS Links:</p>
+      <ol>
+        <li>Install the tool according to its help file, e.g. on a button or start menu in TC</li>
+        <li>Navigate to %SystemRoot% in both of TC's panels</li>
+        <li>Set the cursor on system32 directory (doesn't matter if left or right panel)</li>
+        <li>Call the tool from the button/start menu create in first step</li>
+        <li><b>Important</b>: Replace the "*.*" at the end of the target path with "SysNative" so that the path points to "C:\Windows\SysNative"</li>
+        <li>Confirm the creation of the junction</li>
+      </ol>
+
+
+    <h2>7. Known Issues and Limitations<a name="issueslimitations"></a></h2>
+    <h3>7.1. Known Issues<a name="knownissues"></a></h3>
+    <ul>
+      <li>When the option "Show service state in the extension column of TC's panel" is disabled and the state of any services changes
+          (using this plugin or other means) the icon does not reflect the new state of the service. Fixing this would require a lot
+          of work, so I'll leave it as it is for now.
+      <p><b>Update</b>: This should be fixed as of version 0.4.2, except perhaps for services whose executable is
+          not found/recognized by the plugin, so there isn't any information shown in TC's Date column.</p>
+      </li>
+      <li>The feature "Configure" of <a href="http://www.totalcmd.net/plugring/tc_plugman.html">TC Plugins Manager</a> does not
+          work with this plugin. This is a limitation of TC Plugins Manager. It calls only the ANSI functions exported by the
+          plugins. Since Services2 is a Unicode only plugin (regarding the relevant functions) it does not work.
+      </li>
+      <li>The dialog asking for confirmation to grant a user account the SeServiceLogonRight is too wide on pre-Vista systems.
+          I'm really not happy about this, but inserting manual line-breaks kind of breaks the dialog text on Vista+ systems...
+      </li>
+      <li>The shortcuts assigned to internal/external tools items are not translated. Currently I don't think I will translate
+          them as it is quite some work for a relatively small benefit.
+      </li>
+    </ul>
+    <h3>7.2. Limitations of remote computer management<a name="limitations"></a></h3>
+    <p>Due to the nature of managing services on a remote machine, there are some limitations that are important to be aware of.</p>
+    <ul>
+      <li>
+          The credentials to access a remote system must match the credentials of the user running the plugin. That means, you can't
+          access the remote system if your local user doesn't exist with the same password on the remote system. There's no API to
+          provide any different credentials. Note that the system's MMC snap-in (services.msc) has the same limitation.
+      </li>
+      <li>The information about the service executables and service DLLs shown in TC's panel, like file size, date, attributes, version
+          number and so on, are that of the <b>local</b> system. There's just no reliable way of accessing files on a remote machine,
+          even though there are administrative shares (which are not accessible if the plugin is not run as administrator).<br>
+          This also means that all internal and external tools will operate on the files of the local system.
+      </li>
+      <li>When managing a remote system running Windows Vista or higher from a local system running Windows XP or earlier the startup type
+          "Automatic (Delayed)" will not be available, neither for display nor for selection (service properties dialog). So, although there
+          might be services with this startup type on the remote system, the plugin won't be able to show or set it; the startup type will
+          be "Automatic" instead.
+      </li>
+      <li>The "Service is WOW64" checkbox will not be available in the service properties dialog, because this flag has no meaning anyway on
+          remote systems, even less for internal/external tools.
+      </li>
+    </ul>
+
+
+    <h2>8. Frequently Asked Questions<a name="faq"></a></h2>
+    <p><strong>Why does the plugin load the custom columns view although the option "Load Custom Columns View upon entering
+       the plugin" is disabled?</strong></p>
+    <p>The option controls whether the plugin reports a default custom columns view to TC or not. In case the default custom
+       columns view is changed by the user, TC switches to this custom columns view automatically when the plugin is entered,
+       regardless of the plugin's setting, because the option "Switch to this view when entering the plugin" in TC's custom
+       columns view is enabled by default. So, to really disable the loading of custom columns view the option "Switch to this
+       view when entering the plugin" in TC's custom columns view must be disabled as well.
+    </p>
+    <br>
+    <p><strong>Why is "Service is WOW64" in the service properties dialog not ticked on some  services although they clearly
+       use a 32 bit executable?</strong></p>
+    <p>The checkbox is only ticked when a service has a flag set in the registry which tells the system that this service is
+       a WOW64 service. This happens if the service executable is located in %SystemRoot%\SysWOW64 but its executable path points
+       to %SystemRoot%\system32 and therefore subject to file-system redirection. The flag is not necessarily set if the
+       service executable is located in places that are not subject to file-system redirection, like %ProgramFiles(x86)%.
+    </p>
+    <br>
+    <p><strong>Why does the properties dialog and TC Lister show "C:\Windows\SysNative" as location although the service
+       properties show "C:\Windows\system32"?</strong></p>
+    <p>Take a look at <a href="#x64note">An important note on 64 bit systems</a> section above for a detailed explanation.
+    </p>
+    <br>
+    <p><strong>Why are there services without information about their executables on a remote system?<br>
+       Why is there no "Automatic (Delayed)" startup type on a remote system?
+    </strong></p>
+    <p>Take a look at <a href="#limitations">Limitations of remote computer management</a> section above for a detailed explanation.</p>
+    <br>
+    <p><strong>Why do I get error 5 "Access denied" when trying to access a remote system?</strong></p>
+    <p>See <a href="#remotemgmt">Remote service management</a> section for an explanation and the registry value that's required
+       on remote systems running Vista or later.</p>
+    <br>
+    <p><strong>Why do I get error 1722 "The RPC server is unavailable" when trying to add a remote machine to the list or access a
+       remote system that's already in the list?</strong></p>
+    <p>You're probably trying to remotely manage services on a system running Vista or later from XP or older, or vice versa.
+       Take a look at <a href="#remotemgmt">Remote service management</a> section for a detailed explanation as well as some options
+       to make it work.</p>
+
+
+    <h2>9. License<a name="license"></a></h2>
+    <p>The plugin's cog icon "Fatcow-Farm-Fresh-Cog", part of the "Farm-Fresh Web Icons" package:<br>
+    (C) <a href="http://www.fatcow.com/free-icons">Fatcow Web Hosting</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC Attribution 3.0</a><br>
+    <p>All other icons (except the Delphi main icon) were made by my brother.</p>
+    <br>
+    <p>This software is provided "as is". No warranty provided. You use this program at your own risk. The author will not
+    be responsible for data loss, damages, etc. while using or misusing this software.</p>
+    <p>The software must not be modified, you may not decompile or disassemble it.</p>
+    <p>This plugin is copyrighted freeware.</p>
+
+
+    <h2>10. Thanks to<a name="thanks"></a></h2>
+    <ul>
+      <li>Christian Ghisler, the author of Total Commander, for developing this great program that I use every day</li>
+      <li>Serge Kandakov (KaSA) for making the Services 2.4 plugin. It would have been much more work to make my own plugin
+      without "the original".</li>
+      <li>The authors of HTTP Browser and Uninstaller64 plugins. I adopted some of the ideas (but not any code) from their
+      available source code.</li>
+      <li>Ritsaert Hornstra @ StackOverflow for his unit ServiceManager</li>
+      <li>Colin Wilson for his unit LsaApi</li>
+      <li>Nico Bendlin (NicoDE) for his unit ObjSel</li>
+      <li>The members of the <a href="http://www.delphipraxis.net">Delphi-PRAXiS forum</a> that helped me understand and fix some things</li>
+    </ul>
+
+    <h2>11. Contact<a name="contact"></a></h2>
+    <p>If you have found a bug, have a suggestion, improvement, criticism, translation, you can contact me, Dalai,
+    in English or German, at:<br>
+    Mail: <a href="mailto:dalai82@gmx.net">dalai82@gmx.net</a></p>
+
+    <p>Please put "Services2" somewhere in the subject.</p>
+
+    <p>There is a discussion thread in the official TC forum which can be used, too:
+    <a href="http://ghisler.ch/board/viewtopic.php?t=40155">http://ghisler.ch/board/viewtopic.php?t=40155</a></p>
+  </div>
+</body>
+</html>

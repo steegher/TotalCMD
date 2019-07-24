@@ -1,0 +1,287 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Resource Hacker</title>
+  <STYLE type="text/css"><!-- 
+    body  {
+	  BACKGROUND-COLOR: #E5E2E5;
+      text-align: center;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+	  padding: 20px 20px;
+    }
+    body, td, th {
+      margin: 20px auto 20px auto;
+      font-family: Verdana, Geneva, Arial Cyr, Helvetica, sans-serif;
+      }
+    a   {
+      text-decoration: none;
+      font-weight: bold;
+      }
+    h1  {
+      font-size: 2.0em;
+      font-weight: bold;
+      margin: 0.2em 0em;
+      COLOR: #46845F;
+      }
+    h2  {
+      font-size: 1.7em;
+      margin: 0.2em 0em;
+      font-weight: bold;
+	  COLOR: #009999;
+      }
+    h3  {
+      font-size: 1.2em;
+      padding: 0.2em;
+	  BACKGROUND-COLOR: #BBCCCC; 
+      }
+    TD.menu {BACKGROUND-COLOR: #D8D8B8; TEXT-ALIGN: center}
+		
+	ol, ul {margin: .6em 0 .2em 1em; padding: 0px; list-style: outside;}
+	pre {margin: 0px; padding: 0px; BACKGROUND-COLOR: #F8F8F8; color: maroon;}
+		
+    .caption {BACKGROUND-COLOR: #BACBDA; font-size: 1.3em; font-weight: bold; color: #000066}
+    .maroon {color: maroon;} 
+	strong {color: #46845F;} 
+	.smallfont {font-size: 0.7em;}
+	
+  --></STYLE>
+	<meta name="viewport" content="device-width, initial-scale=1">
+</head>
+
+<body>
+<div align="center">
+<div style="width: 805; text-align: justify;">
+
+<div style="BACKGROUND-COLOR: #BBCCCC; padding: 0 1em 0.7em 1em">
+<h2>Resource Hacker<SUP><FONT SIZE="-1">TM</FONT></SUP></h2>
+... свободно распространяемый компилятор и декомпилятор ресурсов для приложений Windows&reg;
+</div><br>
+
+<h3>Общее представление:</h3>
+
+Resource Hacker<SUP><FONT SIZE="-1">TM</FONT></SUP> — это редактор ресурсов для 32- и 64-битных приложений Windows. Является как <strong>компилятором ресурсов</strong> (для файлов *.rc), так и <strong>декомпилятором</strong>; включает просмотр и редактирование ресурсов в программах (*.exe; *.dll; *.scr; и др.) и компилятор ресурсных библиотек (*.res, *.mui). Хотя Resource Hacker — это прежде всего GUI-приложение, оно также предоставляет множество функций для компиляции и декомпиляции ресурсов из командной строки.<br><br>
+
+<!-- <img src="bm00.png" width="985" height="651" alt=""><br><br> -->
+<img src="1.png" width="800" height="477" alt="Resource Hacker"><br><br>
+<img src="2.png" width="800" height="477" alt=""><br><br>
+
+
+<h3>Компиляция:</h3>
+
+Компиляция может быть инициирована либо передачей файла сценария ресурсов как параметра командной строки (см. ниже), либо с помощью текстового редактора Resource Hacker.
+<br><br>
+
+Полный список операторов ресурсов можно найти <a  href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa381043(v=vs.85).aspx" target="_blank">здесь</a>.<br><br>
+
+Дополнительные возможности компилятора Resource Hacker включают директивы #INCLUDE, #IF и #IFDEF, которые могут быть вложены на нескольких уровнях.
+
+Поддерживаемые директивы компилятора включают #DEFINE, #UNDEF, #IF, #ELIF, #ELSE, #IFDEF, #IFNDEF, #INCLUDE, и #PRAGMA. 
+	
+	Строки в операторах ресурсов определены между символами двойные кавычки ("). Эти строки могут также содержать типичные в "C"-стиле "escaped"-символы управляющей последовательности: \t, \n, \\, \" и \000 .. \377 (восьмеричные). Двойные кавычки внутри строки могут быть вставлены лишь предваряя их либо слешем, либо другими двойными кавычками.
+
+	Комментариям скрипта предшествуют либо двойная косая черта (//), либо точка с запятой (;). 
+	
+	Разрешены имена файлов с относительными путями. Имена файлов  с пробелами должны быть заключены в двойные кавычки.<br><br>
+
+Компилятор ошибок сообщает даже об ошибках синтаксиса оператора INCLUDE ...<br>
+<img src="3.png" width="800" height="477" alt=""><br><br>
+
+<h3>Просмотр и редактирование ресурсов:</h3>
+
+После открытия файла его ресурсы обычно отображаются в виде изображения (или группы изображений) или в виде декомпилированного текста. Двоичные ресурсы, как правило, изображения, не могут быть отредактированы непосредственно с помощью Resource Hacker, но они могут быть очень легко экспортированы и импортированы, после того, как они были изменены во внешнем графическом редакторе. (Я не вижу необходимости внедрять в программу функционал, с которым так хорошо справляются сторонние редакторы.) <br><br>
+<img src="4.png" width="800" height="477" alt=""><br><br>
+<img src="5.png" width="752" height="607" alt=""><br><br>
+
+Типы ресурсов "Меню" и "Диалоговых окон" имеют собственный визуальный редактор:<br><br>
+<img src="6.png" width="752" height="607" alt=""><br><br>
+<img src="7.png" width="752" height="607" alt=""><br><br>
+
+Двоичные ресурсы с неизвестными форматами будут отображаться в виде двоичного (бинарного) кода только для чтения. (В этом же формате можно просмотреть любой ресурс, если это необходимо.)<br>
+<img src="8.png" width="788" height="607" alt=""><br><br>
+
+<h3>Другие возможности:</h3>
+
+<img src="9.png" width="803" height="553" alt=""><br><br><br>
+
+<h3>Синтаксис командной строки:</h3>
+	Почти все функциональные возможности Resource Hacker можно получить из командной строки, не открывая графическую оболочку.<br>
+	Инструкции командной строки и сценарии Resource Hacker помогут избавиться от повторяющихся задач.<br>
+Инструкции командной строки представляют из себя комбинацию команды и параметра, как описано ниже в таблице:
+ 
+	
+<strong>Операторы командной строки:</strong><br><br>
+<table cellspacing="2" cellpadding="2" border="0">
+<tr>
+	<th align="left">Ключ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>&nbsp;</th>
+	<th align="left">Параметр</th>
+</tr>
+<tr>
+	<td valign="top">-open</td><td>&nbsp;</td>
+	<td>имя_файла - имя файла, который необходимо изменить. Это должен быть Windows PE-файл (*.exe, *.dll и др.) или скомпилированный или нескомпилированный файл ресурсов (*.res или *.rc)</td>
+</tr>
+<tr>
+	<td valign="top">-save</td><td>&nbsp;</td>
+	<td>имя_файла - новое имя изменённого или вновь созданного файла, либо изменённый открытый файл, либо извлечённый ресурс</td>
+</tr>
+<tr>
+	<td valign="top">-resource</td><td>&nbsp;</td>
+	<td>имя_файла - содержимое ресурса, добавляемого в открытый файл</td>
+</tr>
+<tr>
+	<td valign="top">-action</td><td>&nbsp;</td>
+	<td>действие, которое необходимо выполнить в открытом файле:<br>
+	<ul style="margin: .6em 0 .2em 1em; padding: 0px; list-style: outside;">
+	<li><strong>add</strong>          - добавить ресурс, если он уже существует 
+	<li><strong>addoverwrite</strong> - добавить ресурс, перезаписывая существующие 
+	<li><strong>addskip</strong> 	 -  добавить ресурс, пропуская существующие 
+	<li><strong>compile</strong>      - компиляция скрипта файла ресурсов (*.rc) в двоичный файл ресурсов (*.res)
+	<li><strong>delete</strong>       - удалить ресурс
+	<li><strong>extract</strong>      - извлечь ресурс
+	<li><strong>modify</strong>       - изменить ресурс
+	</ul>	
+	</td>
+</tr>
+<tr>
+	<td valign="top">-mask</td><td>&nbsp;</td>
+	<td>маска ресурса - <em>тип</em>,<em>имя</em>,<em>язык</em><br>
+	запятые обязательны, но любой из параметров: <em>тип</em>,<em>имя</em>,<em>язык</em> - необязателен</td>
+</tr>
+<tr>
+	<td valign="top">-log</td><td>&nbsp;</td>
+	<td>имя_файла или <strong>CONSOLE</strong> или <strong>NUL</strong><br>
+      CONSOLE может быть сокращено до <strong>CON</strong><br>
+      Запись подробностей выполненной операции в журнал.<br>
+      Если этот ключ опущен, журнал будет записан в <em>resourcehacker.log</em></td>
+</tr>
+<tr>
+	<td valign="top">-script</td><td>&nbsp;</td>
+	<td>имя_файла - содержимое скрипта с несколькими командами, а НЕ скрипт ресурса. Для дополнительной информации: -help script</td>
+</tr>
+<tr>
+	<td valign="top">-help</td><td>&nbsp;</td>
+	<td>справка - параметры командной строки или скрипта (всегда выводится в CONSOLE), другие ключи игнорируются.</td>
+</tr>
+</table><br>
+
+Примечания:
+<ol>
+	<li>Идентификаторы ключей (кроме -script) могут быть сокращены до одного символа (например: -res или -r). 
+	<li>Операторы ключей можно размещать в любом порядке.
+	<li>Имена файлов, содержащие пробелы, должны быть заключены в двойные кавычки. 
+</ol>
+
+<br>
+<strong>Примеры пакетных файлов</strong> <span class="smallfont">(используя rh.exe вместо ResourceHacker.exe для краткости)</span><br><br>
+
+reshack_help.bat:
+<pre>
+ResourceHacker.exe -help
+@pause  :: таким образом, мы видим консольный вывод до закрытия окна CMD.</pre><br>
+  
+reshack_compile_res_script.bat:
+<pre>
+rh.exe -open .\in\resources.rc -save .\out\resources.res -action compile -log NUL</pre><br>
+
+reshack_add_icon_to_old.bat:
+<pre>
+rh.exe -open old.exe -save new.exe -action addskip -res my.ico -mask ICONGROUP,MAINICON,</pre><br>
+
+reshack_extract_icon_from_source.bat:
+<pre>
+rh.exe -open source.exe -save icons.ico -action extract -mask ICONGROUP,MAINICON, -log CON
+@pause</pre><br>
+
+reshack_extract_all_icons_from_source.bat:
+<pre>
+rh.exe -open source.exe -save savedicons.rc -action extract -mask ICONGROUP,, -log rh.log</pre><br>
+
+reshack_execute_my_script.bat:
+<pre>
+ResourceHacker.exe -script myscript.txt</pre><br>
+
+	
+<strong>Сценарии Resource Hacker:</strong><br><br>
+
+Сценарии Resource Hacker выполняются из командной строки с использованием следующего синтаксиса:<br><br>
+
+<pre>  ResourceHacker.exe -script ФайлСкрипта</pre><br>
+
+Скрипты Resource Hacker представляют собой текстовые файлы следующего формата:<br><br>
+<pre>
+  //комментариям предшествуют двойные косые чёрточки
+  [FILENAMES]
+  Open=
+  Save=
+  Log=
+  [COMMANDS]
+  //одна или несколько из следующих команд ...
+  -add          SourceFile, ResourceMask
+  -addskip      SourceFile, ResourceMask
+  -addoverwrite SourceFile, ResourceMask
+  -addoverwrite SourceFile, ResourceMask
+  -modify       SourceFile, ResourceMask
+  -extract      TargetFile, ResourceMask
+  -delete       ResourceMask</pre><br>
+	
+Примечание: имена файлов, содержащие пробелы, должны быть заключены в двойные кавычки.<br><br>
+
+<strong>Примеры скриптов Resource Hacker:</strong><br><br>
+
+rh_script_myprog_rus.txt -
+<pre>
+
+  // Этот скрипт удаляет нейтральный язык (0) из всех
+  // строковых таблиц, меню и диалоговых элементов ресурсов
+  // в MyProg.exe перед заменой их русскими RUSSIAN (1049) пунктами...	
+  [FILENAMES]
+  Exe=    MyProg.exe
+  SaveAs= MyProg_Rus.exe
+  Log=    MyProg_Rus.log	
+  [COMMANDS]
+  -delete  MENU,,0
+  -delete  DIALOG,,0
+  -delete  STRINGTABLE,,0
+  -add     MyProg_Rus.res, MENU,,1049
+  -add     MyProg_Rus.res, DIALOG,,1049
+  -add     MyProg_Rus.res, STRINGTABLE,,1049</pre><br>
+	
+rh_script_myprog_upd_images.txt -
+<pre>
+
+  // Этот скрипт обновляет 2 растровых изображений и
+  // иконку в MyProg.exe ...
+  [FILENAMES]
+  Exe=    MyProg.exe
+  SaveAs= MyProg_Updated.exe	
+  [COMMANDS]
+  -addoverwrite Bitmap128.bmp, BITMAP,128,
+  -addoverwrite Bitmap129.bmp, BITMAP,129,0
+  -addoverwrite MainIcon.ico, ICONGROUP,MAINICON,0</pre><br>
+		
+rh_script_myprog_upd_all.txt -
+<pre>
+
+  // Этот скрипт заменяет все ресурсы
+  // в MyProg.exe всеми ресурсами
+  // из MyProgNew.res	
+  [FILENAMES]
+  Exe=    MyProg.exe
+  SaveAs= MyProg_Updated.exe
+  [COMMANDS]
+  -delete  ,,,            //удалить все ресурсы, прежде чем...
+  -add MyProgNew.res ,,,  //добавить новые ресурсы</pre><br><br>
+
+
+<h3>&quot;Упакованные&quot; или  &quot;сжатые&quot; исполняемые файлы:</h3>
+Некоторые исполняемые файлы &quot;упакованы&quot; или &quot;сжаты&quot; различными алгоритмами при компиляции. Это уменьшает размер файла, а также затрудняет просмотр и изменение ресурсов. Я предполагаю, что "скрытие" ресурсов являлось основной целью данного действия. В знак уважения к программистам, защищающим таким образом свои авторские права, я не стал внедрять функционал распаковки подобных ресурсов при помощи Resource Hacker. 
+	<BR> <BR> 
+	<font color="#1107F4">Также замечу, что "сжатые" исполняемые файлы стали довольно редкими в последние 5-10 лет. В основном это происходит потому, что исполняемые файлы теперь почти всегда сжимаются в установщиках или ZIP-архивах. В то же время авторы программного обеспечения, кажется, вставляют всю информацию в разделы ресурсов их программ. Я подозреваю, что ранние опасения по поводу потери интеллектуальной собственности с помощью реверсивной инженерии, наконец, были устранены.
+</font>
+	<BR><br>
+
+
+</div> </div><!-- outer most formatting-->
+</body>
+</html>

@@ -1,0 +1,360 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>TCTorrent documentation</title>
+  <meta name="Author" content="Dmitry Yudin">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style type="text/css">
+  <!--
+  body {font-family: Verdana, Tahoma; font-size: 10pt}
+  h1 {font-size: 16pt}
+  h2 {font-size: 14pt}
+  .comment {width: 800px; padding-top: 8px; podding-bottom: 0px; font-family: Verdana; font-size: 10pt}
+  .image {margin-top: -5px}
+  -->
+  </style>
+</head>
+
+<body>
+
+<h1>TCTorrent plugin for Total Commander 2.0.3 beta</h1>
+
+<h2>Plugin description</h2>
+<p>TCTorrent - is content/lister plugin for working with .torrent files. This impementation have different approach to visualize torrent file content instead existing plugins. The both parts are fully unicode.
+
+<h2>Prerequisites</h2>
+<p>This plugin has been tested with:
+<ul>
+	<li>Total Commander 7.56 под Windows XP Professional SP3 (x86) 
+	<li>Total Commander 8.0 beta x64 под Windows 7 (x64) 
+</ul>
+
+<h2>Installation</h2>
+<p>Just open wlx_wdx_tctorrent.zip in Total Commander, this will install the plugin automatically. 
+
+<h2>Usage</h2>
+<p>Please refer Total Commander documentation on how to configure columns. You can select:
+<ul>
+	<li>Name
+	<li>Files count
+	<li>Total size
+	<li>Block size
+	<li>Block count
+	<li>Tracker ("Full" or "Host only")
+	<li>Created date
+	<li>SHA hash
+	<li>Program
+	<li>Comment
+	<li>Encoding
+	<li>Private
+	<li>Multifile
+	<li>Errors (contain the info about errors occured during parsing)
+</ul>
+
+Torrent Name, Files count, Total size, Block size, Block count, Tracker, Created date, SHA hash, Comment and Errors.
+
+<p>In Lister part you can use context menu to copy either data only or whole info with formatting. If data have a links, they will appear in the context menu. Also search is working.
+
+<p>Export can have an icons too, but for converting them you need to have GDI+ installed. If you have at least WinXP, you most likely have it. Also, icons in resulting HTML will be visible in the modern browsers only, IE6 is out this range, sorry. 
+
+<h2>Hotkeys</h2>
+<ul>
+	<li>Ctrl+A - select all
+	<li>Ctrl+C - copy data (without headers)
+	<li>Shift+Ctrl+C  - copy all data (with headers)
+	<li>Shift+Ctrl+Down - expand all folders
+	<li>Shift+Ctrl+Up - collapse all folders
+	<li>Ctrl+E - export HTML
+	<li>Ctrl+D - open current torrent in associated (or custom) torrent client
+	<li>Ctrl+O - options
+	<li>Ctrl+Z - expand/collapse details section
+	<li>Ctrl+G - run URL if it exists in the selected line
+</ul>
+
+<h2>Options</h2>
+<p>Explanation of some non self-telling options:
+
+<p><b>Styles - Extension groups</b> - here you can define the groups of extensions. After you done that, your group will appear in the available styles list, and you can set it's own color.
+
+<p><b>Magnet - Template for magnet</b> - here you can enter the text that will be shown in the viewer (link itself still will be full). In this text you can use following substitutes:
+<ul>
+	<li>%HS - SHA1 hash
+	<li>%HB - BASE32 hash
+	<li>%N - name
+	<li>%T - tracker
+	<li>%S - size
+</ul>
+
+<p><b>Client - Custom torrent client</b> - you can place here your own custom torrent client (for example portable one). In both fields you can use environment variables (for example %COMMANDER_PATH%). Paramaters field also accepts the following substitutes: 
+<ul>
+	<li>%P - full path of current torrent file
+	<li>%L - list with files selected in viewer (will be created in standard TC format)
+</ul>
+
+<h2>Ini-file only options</h2>
+<p><b>MarginLeft</b> - left margin. Default is 3.
+
+<h2>Version history</h2>
+<pre>
+Version 2.0.4 (2019-03-31) beta
++ WDX: added field with unsupported fields count
++ WLX: added vieweing of non-standard fields for files
++ WLX: better viewing of non-standard fields, in theory, almost all fields should be shown
++ support for more fields with .utf-8 suffix (old BitComet)
++ WLX: support publisher and publisher-url
++ parser should be more tolerate to structure damaging
+- WLX: fixed items unfolding when searhing
++ WLX: ed2k links are detected as link too
+- WLX: fixed wrong encoding in custom fields
+- WCX: fixed size for files > 4Gb
+
+Version 2.0.3 (2019-03-24) beta
+* no more separate wdx (now it's have little sense)
+* translation files are unicode now
++ added simple WCX functionality (file browsing)
+- WLX: fixed sometimes wrongly encoded comments (and maybe other sections too) 
+* default MS Sans Serif font changed to Microsoft Sans Serif (unicode)
++ search can be performed with "whole words", "backward" and "case sensitive" options
+- fixed search, now it search folder names too
++ WLX: statusbar now show loaded status (success or error)
++ Parser: errors are translated
++ Slightly redone error reporting (show in list, no more messageboxes)
++ Parser: will try to fix some corrupted files to show it's content
+- Parser: handle case, where "announce-list" is not a list actually
+- WLX: almost removed list flickering
+
+Version 2.0.2 (2011-11-29)
++ Added Hungary translation
+- fixed bug with some torrents with "url-list" segment
+
+Version 2.0.1 (2011-11-29)
+* Updated Ukrainian translation (thanks Maximus)
+- Parser: fixed error on some torrents with large text blocks
+
+Version 2.0.0 (2011-11-11)
+* WDX: merged "Tracker" and "Tracker (host)" fields (with units use)
+
+Version 1.0.22 (beta) (2011-11-10)
++ Parser: added more informative error handling
+- WLX: fixed wrong thouthands separator on some locales
+- WLX: duplicated text in lines where link was at end of text
+- Parser: fixed error on files with corrupt "announce-list"
+- Parser: fixed error with negative integers reading
+
+Version 1.0.21 (beta) (2011-11-09)
++ WLX: template for Magnet displaying
++ WLX: finally (?) fixed wrong text width calculation
+* WLX: removed option to shorten magnet link in viewer (template now)
+
+Version 1.0.20 (beta) (2011-11-08)
++ WLX: option to shorten magnet link in viewer
++ WLX: added context menu item "Copy link"
+* WLX: removed Ctrl+Click functionality (just click on link now)
+* WLX: removed "Links" item from context menu
+- WDX: wrong SHA1 displaying
+- WLX: fixed position of link menu appearance
+- WLX: finally fixed wrong text width calculation
+- WLX: fixed size disappearing when "Hide bracket" enabled
+
+Version 1.0.19 (beta) (2011-11-03)
++ WLX: configurable color for highlited items
++ WLX: added left margin
+* WLX: updated Ukrainian translation
+- WLX: incorrect painting when window scrolled horizontally
+- WLX: fixed (again) horizontal scrolling extent
+
+Version 1.0.18 (beta) (2011-11-02)
++ WLX: links highlight directly in list
++ WLX: brackets around size can be hidden
+- WLX: horizontal scrollbar not appearing when on info widh > files width
+
+Version 1.0.17 (beta) (2011-10-25)
++ WLX: Ctrl+G hotkey to go link in selected line
++ WLX: added horizontal scrollbar where needed
+- WLX: fixed wrong detect string
+* WLX: Slightly improved loading speed
+
+Version 1.0.16 (beta) (2011-10-20)
++ WLX: Configurable Magnet generating
++ WLX: Added custom info displaying
+- WLX: Fixed bug when mouse dropping field in config
++ Added x64 version
+
+Version 1.0.15 (beta) (2010-12-27)
++ Parser preferable use ***.utf-8 tags if they found
++ WLX: added converting some asian encodings, if they are correctly defined in the file
+- WLX: fixed crash on some invalid torrents
+- WLX: fixed copying non-latin text in the clipboard
+
+Version 1.0.14 (beta) (2010-12-25)
++ WDX: enabled background torrent loading
++ WDX: added cache to speedup repeating browsing
+
+Version 1.0.13 (beta) (2010-12-25)
+- WDX: not counting total torrent size
+- Various fixes related to UTF-8 processing
+- Unicode support was disabled
+* Changed types of Multifile and Private fields to boolean
++ WDX: added forgotten Multiline field
+
+Version 1.0.12 (beta) (2010-12-24)
++ WDX: Added field that contain tracker host only (http://bt.tracker.org/announce -> bt.tracker.org)
+- WLX: New fields are not added in list
++ WLX: Added field with Magnet URI
++ WLX: Added various hotkeys
+- WLX: Fixed the problem when plugin block dir renaming, where just viewed torrent was
+- WLX: Fixed searching non-latin text
++ WLX: Unicode support, safely work only with really UTF-8 encoded torrents
++ WLX: Added "Webseeds" field
++ Added "Multifile" field
+* "Private" flag now is separate field
+* Field "Additionally" removed - all possible new parameters will have own fields
+* Various speed optimizations
+* Written own torrent-file parser, speed increased in ~2 times
+
+Version 1.0.11 (beta) (2010-07-08)
++ Added moving fields in options by keyboard (Ctrl+Arrows)
+- Fixed small bugs
+
+Version 1.0.10 (beta) (2010-07-06)
++ Added ability to reorder fields
++ Added setting to select custom torrent client
+- Fixed changing list items in option dialog by keyboard
+
+Version 1.0.9 (beta) (2010-06-30)
++ Coloring files by their extension
+
+Version 1.0.2 (2010-06-30)
+- Small language fix
+- Fixed incorrect "e" char in the "Created" field name. If you use it, you have to fix it in your configuration.
+
+Version 1.0.1 (2010-06-26)
+- Fixed wdx crash on files with unicode names without associated short ones (thanks CheeseCake)
+
+Version 1.0.0 (2010-06-24)
+- Fixed wrong displaying of size values with "Thouthands separator" enabled (thanks za222)
+- Fixed work with keyboard when switching to plugin in Ctrl+Q mode (thans Den_Klimov)
+
+Version 0.93 (2010-03-14)
++ Spanish translation (thanks Jose Manuel Breto)
+- Fixed focus catching in Ctrl+Q mode
+- Fixed crash when Esc pressed in Ctrl+Q mode
+
+Version 0.92 (2009-12-16)
++ Ukrainian translation (thanks Maximus)
++ Option to remember or not export path
+* "About" dialog info moved to options tab
+- Fixed bug when WLX don't show trackers on torrents with missing "announce"
+
+Version 0.91 (2009-11-30)
++ Plugin trying to hide passkey when export html (optionally)
+- Fixed incorrect handling of trackers list that lead to duplicate url's
+
+Version 0.90 (2009-11-20)
++ Ctrl+Click opens URL found in data (menu appear if count > 1)
++ Torrent file name suggested for export name
++ Plugin will not show text about client, if client is not installed
+* Styles are resets to default independently
+* Auto line height now 0 instead -1 (cosmetic)
+* No duplicates allowed in the trackers list
+- Fixed crash on files with missing "announce" segment
+- Fixed copying to clipdoard on systems with non-latin codepage
+
+Version 0.89 (2009-11-07)
+- Fixed error when switching to another plugin by pressing "4"
+- Fixed view form translation when it's chosen manually
+
+Version 0.88 (2009-11-06)
+* Now export output is UTF-8
++ Overwrite prompt for export
++ Added ability for line height manual setting
+- Fixed small bug with URL detection
+- Fixed size units in export
+
+Version 0.87 (2009-10-29)
++ Added simple HTML export (for icons export needed GDI+)
+
+Version 0.86 (2009-10-29)
++ Dramatically increased loading speed
+- Probably fixed bug with crashing when loading certain torrents
+
+Version 0.85 (2009-10-28)
+* Increased speed of unicode version of WDX
++ Unicode WDX is now really unicode
++ Reset styles to default button
++ Option to expand all items at startup
++ Files counter (may be wrong on unicode names)
+- Fixed accidental crashes in the unicode WDX
+- Fixed incorrect calculation of information splitter
+- Changed parser to not fail on corrupt "announce-list" segments
+
+Version 0.81 (2009-10-22)
++ Ability for manual language setting in case of wrong detection
+- Probably fixed bug with disappearing icons
+
+Version 0.80 (2009-10-21)
+* TCTorrent.sample.ini is not needed anymore, ini created automatically
+* Some ini keys changed, recommended to delete old ini before use this version
++ Thousands separators for sizes 
++ Options dialog
++ Now multiline comments are actually multiline and expandable
+- Fixed language detection method
+- Fixed incorrect behaviour of about dialog
+
+Version 0.71 (2009-10-05)
++ Copying sample ini file if no working copy found
+- Fixed disappearing of client icon after about calling
+- Fixed two bugs with expand/collapse items
+
+Version 0.70 (2009-10-01)
++ Ability to use large icons
++ Added detection when strings in torrent file saved as ANSI 
++ Significally icreased loading speed
++ Menu items for expand/collapse all folders
++ Rounding size values to integer
++ Folding items by pressing return
++ Added unicode support for WDX
+* Changed method of showing progressbar
+- Fixed search function when multiple lister windows are open
+- Flickering when clicking by right mouse button
+- Fixed work with files that have unicode in names
+- Fixed crash on torrents with huge comments
+
+Version 0.60 (2009-09-29)
++ Progress bar will appear when loading torrents with large files count
++ Optional displaying of associated icons
++ Options for displaying size (auto, or fixed units)
++ Optional state of extra info at startup (folded or not)
++ Setting of custom items colors and fonts
++ Status bar
++ Folding info
++ Added 3 params to WDX: Program name, Encoding and Private flag.
++ Lister window starts focused
++ Aligning of sizes
+- Fixed wrong folder size
+- Fixed compatibility with Universal Viewer
+
+Version 0.50 (2009-09-23)
+  First public release.
+</pre>
+
+<h2>Credits</h2>
+<p>Christian Ghisler - for infinitely powerful tool.
+<p>Maximus - ukrainian translation
+<p>Jose Manuel Breto - spanish translation
+
+<h2>License</h2>
+<p>Copyright (c) 2009-2011 Dmitry Yudin
+
+<p>This plugin is freeware.
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+</body>
+</html>

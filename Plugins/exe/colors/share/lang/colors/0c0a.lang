@@ -1,0 +1,20 @@
+; Spanish
+[0c0a]
+btn_ok=Aceptar
+btn_cancel=Cancelar
+btn_help=Ayuda
+btn_apply=Aplicar
+theme_group1=Información del esquema de colores:
+theme_group2=Esquema de color:
+theme_group3=Ejemplo:
+theme_author=Autor:
+theme_feedback=Comentarios:
+theme_description=Descripción:
+theme_not_specified=Sin especificar
+theme_user=Colores de usuario
+theme_user_desc=Tema creado automáticamente a partir del esquema del usuario.
+error_msg1=Este programa sólo puede ser ejecutado con Total Commander 7.0 o superior
+ftype_link=Grupo de Colores
+ftype_header=Grupo de colores (por tipo de ficheros)
+ftype_close=Cerrar
+ftype_invalid=El tema que ha elegido, no contiene ningún grupo de colores.

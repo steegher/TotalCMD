@@ -1,0 +1,135 @@
+
+2019.05.18
++ updated core components
+- fix: scaling for High-DPI
+
+2019.04.26
++ updated core components, lexers
++ add: lexer TypeScript
++ add: handle Shift+F10 to show ctx menu
+
+2019.03.12
+- fix: global options (e.g. max file size for lexer) loaded too late
+
+2019.03.02
++ added option "Allow caret after line end"
++ on going to next file in QuickView, confirm file saving too
+
+2019.02.22
++ added context menu items "Word wrap", "Find..."
++ updated core components
++ updated lexers
+
+2019.01.17
++ updated core components
++ updated lexers and themes
+
+2018.09.27
++ on choosing ui-theme, ask to apply syntax-theme with the same name
++ updated lexers
+
+2018.08.11
++ updated core components
++ updated lexers
++ added UI theme Retro9
+
+2018.05.11
++ add: UI-theme "white"
++ updated lexer PowerShell
++ updated lexer VBScript
+- fix: avoid change encoding by W (wrap) key in lister
+* change: A/S lister keys won't change encoding now, it's not good for editor
+
+2018.05.01
++ add: option "Gutter: numbers band"
++ add: option "Gutter: folding band"
++ reworked lexers: HTML, PHP, PHP_
++ updated lexer VBScript
+- fix: crash on Shift+F3 without find-first
+
+2018.04.28
++ add: option "Show last line on top"
+- fix: scroll via mouse wheel, scroll via Space (no caret mode) are consistent now (don't use caret)
+
+2018.04.28
++ support for color themes, 2 options: UI theme, Syntax theme (uses themes from CudaText)
+
+2018.04.22
++ add: option "Max file size to open"
+- fix: duplicated Shift+Ins
+
+2018.04.21
++ add: option "Tab size= 3"
++ add: option "Copy line if none selected"
++ add: hidden gutter's band for bookmarks
+
+2018.04.19
++ add: option "Gutter"
++ add: option "Minimap: tooltip"
++ add: option "Use UTF8 as def encoding"
+
+2018.04.18
++ add: option "Open URL by simple click"
++ add: context menu item "Save"
+
+2018.04.16
++ compiled on last component versions: e.g. better Unicode rendering, better minimap, new minimap tooltip
++ updated lexers from CudaText
++ add lexers: Apache config, Haskell
+
+2017.11.27
++ add: option "Allow plugin opening only if lexer found"
++ add: menu item "Read only" is always enabled and ok with no-caret mode
+- fix: behaviour of End key in no-caret mode (must always show begin of line)
+- fix: adapt to last packages ATFlatControls, EControl
+
+2017.11.11
++ add: keep vert-scroll position (w/o word-wrap) on change encoding
+
+2017.11.05
++ add: support hotkeys Ctrl+F, Shift+F3 (find back)
++ add: support OEM encoding better (locale dependant)
+
+2017.11.04
+- add: no-caret: hide caret harder
+- add: no-caret: keys Left/right
+
+2017.11.04
++ add: A/S key toggle ansi/ascii
++ add: W key toggles wrap
++ add: faster scroll by arrow
+
+2017.11.03
++ option "No caret", scroll by arrows/home/end/space/shift+space
+- fixed: initial state of "wrap text" option
+- fixed: incorrect find first/next pos
+
+2017.10.25
++ options in dialog: Minimap; Unprinted chars; Unprinted color
+
+2017.10.24
++ support non-English file path to plugin
++ option "Tab size"
++ option "Tab enters spaces"
+
+2017.10.23
+- fixed: x64, crash in Options dialog
++ support TC's search commands F7/F5
++ support keys 1..7, N, P
+
+2017.10.20
++ close window by Esc
++ react to Lister's "word wrap", "copy", "select all"
++ menuitem "Paste" (for read-only off)
+
+2017.10.19
++ used API ListLoadNext
+
+2017.10.19
++ context menu item "Options dialog"
++ context menu item "Go to"
++ context menu item "Read-only" and ask to save if file modified
++ statusbar field "encoding" and encoding menu
+
+2017.10.18
+initial

@@ -1,0 +1,8 @@
+﻿# For documentation, see http://www.sumatrapdfreader.org/settings3.1.html
+
+EscToExit = true
+UiLanguage = ru
+CheckForUpdates = false
+DefaultDisplayMode = continuous
+DefaultZoom = fit width
+RememberOpenedFiles = false

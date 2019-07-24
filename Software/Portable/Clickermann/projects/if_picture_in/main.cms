@@ -1,0 +1,14 @@
+﻿// ShitFind Test v1.0
+// Notice: Keep Cmann main window on desktop
+
+getscreen
+
+IF_PICTURE_IN (0,0, $_xmax,$_ymax, "shit.bmp", 2366701)
+  print("found at X=", $_return1, ", Y=", $_return2)
+  move($_return1+4, $_return2+4)
+else
+  print("not found")  
+END_IF
+
+
+halt

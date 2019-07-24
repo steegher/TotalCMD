@@ -1,0 +1,135 @@
+   
+   History
+   -------
+Beta 1 (unknown)
+  The most first version IEView ("Y. Gershanov").
+Beta 2 (1.12.2002)
+- extensions are now case-insensitive
+- added protection against wrong file formats (like text files with .doc or .pdf extension)
+- displaying of directories is now optional
+Beta 3 (3.12.2002)
+- Extensions for directories are not checked now.
+- Fixed many issues mostly related to focus and hotkey handling.
+- Esc handling is fixed
+- Print, ProvFile, NextFile, Search hotkeys work now
+- Search (Ctrl-F) is now operational in the IE window as well
+- INI file: replaced ShowUpDir with IgnoreDirs (may be useful for future pugins that work with directories)
+Beta 4 (17.12.2002)
+- Fixed crash on exit under Win98/ME
+- Fixed some resource-related problems
+- Added control over what HTML elements IEView loads and displays
+- Added optional blocking of display of the .. directory
+1.0 (22.08.2004)
+  Last, final version ("Y. Gershanov").
+(Author has stopped the most further work.)
+
+   New history
+   -----------
+1.1 (31.08.2004 )
+  First version new IEView ("Rk" under editing "Konstantin")
+(Thank you "Rk" and "Konstantin" for continuation of the work.)
+- corrected focus Acrobat Reader (not for all version completely correct).
+- not it is necessary to clique mouse for interception of the focus web-files (not always works). (Ctrl+Q - press Tab, F3 - automatically.)
+1.2 (3.09.2004)
+- Is Corrected mistake of the interception of the focus.
+(Mistake is Added. When viewing directory (QuickView mode), cursor disappears from file panel.)
+1.3 (9.09.2004)
+- Is Corrected error. When viewing directory (QuickView mode), cursor does not disappear from file panel.
+1.4 (15.09.2004)
+- Is Corrected interception of the focus in Word,Excel.
+- Is Corrected loss of the focus in Word Splash.
+- Is Added interception of the focus when viewing directory (QuickView mode).
+- In ieview.ini is added adjusting the focus: Key FocusByWindowClass, Key UseMiddleWhenFocusByPoint, Section [WindowClasses].
+1.5 (18.09.2004)
+- Is Corrected loss of the focus when viewing directory and PDF. (The Incorrect interception of the focus Acrobat Reader 6.0 until it is corrected.)
+- Now on directory and HTML possible to move by means of Backspace, Z (back), X (onward).
+- Is Added determination of the file on type, rather then only on extension (only HTML). (In section [Signatures] ieview.ini is added key %=... He is used if filename does not correspond to the extensions in sections [Extentions]. For instance "index.xml.ru" or "index.php@id=dif&page=8".)
+1.6 (19.09.2004)
+- Is Corrected focus when change the mode of the showing the file (if press '1 when viewing PDF).
+- Is Corrected focus in file, opened on [Signatures] %=... (determination file on type)
+- In ieview.ini is added key CaseInsensitiveSignatures and key ListerTitle (Style of IEView WindowText).
+1.7 (22.09.2004)
+- bug with ListerTitle=1 fixed. (Note.: Works only with html files, since there is no concept 'Title' for arbitrary document.)
+- Hotkey added: Ctrl+L.
+- Section added [BlockFocus].
+1.8 (24.09.2004)
+- some more bugfixes connected with focus.
+- [Hotkeys] section renamed to [TranslationHotkeys].
+- Section added: [IEViewHotkeys].
+1.9 (2.10.2004)
+- ListerTitle is string with specifiers %TITLE, %DRIVE, %DIR, %NAME, %EXT.
+- Focus processing method changed.
+- Values in [BlockFocus] section are set as "group=0/1", instead of "ext=count".
+- Added CHM files support.
+1.91 (10.10.2004)
+- CHM support extended
+- Key added: [options] Silent
+- Fixed: Excel didn't finish correctly when viewing xls files
+- Fixed: Many IE windows opened, when viewing html file
+- Quick View title changes, when navigating html file or folder
+1.91a (13.10.2004)
+- some bugfixes
+- Hotkeys added: Stop, Refresh
+1.92 (29.11.2004)
+- Searching with F3/F7 in HTML files
+- [Signatures]->"%" key replaced with [DefaultSignatures] section and [options]->"CheckDefaultSignatures" key
+- bugfixes
+1.93 (10.02.2005)
+- StatusBar
+- "RemoveImages", "CmdFind" hotkeys
+- bugfixes
+1.94 (18.06.2005)
+- Keys removed: NoFocusChange, BlockParentDir
+- Keys added: [Extensions]->WordToHTML, [Extensions]->WordToMHT, [options]->StatusBarInQuickView,
+  [options]->SavePositionOnExit, [options]->AllowPopups.
+- Hotkey added: SavePosition
+- Word files are opened read-only
+- bugfixes
+1.94a (14.07.2005)
+- bugfixes
+- FocusByWindowClass and UseMiddleWhenFocusByPoint keys moved to the [Debug] section
+
+   HTMLView
+   --------
+1.0 (05.05.2006)
+- All non-html functionality removed
+- Toolbar
+- Keys added: [Hotkeys]->TypingTranslationHotkeys, [options]->UseDefaultBrowser, [options]->ShowToolbar
+
+1.1 (08.05.2006)
+- [options]->UseDefaultBrowser key replaced with [options]->NewWindowHTML and [options]->NewWindowCHM
+- [options]->ShowDirs key restored
+- [options]->ShowToolbar key changed and StatusBarInQuickView replaced with ShowStatusbar
+- bugfix: toolbar images did not load when screen color depth is not 32bpp.
+
+1.2 (15.07.2007)
+- ListLoadNext support
+- GlobalHook is disabled by default
+- [Extensions]->SignatureSkipSpaces key added
+- Hotkeys section: commands added
+- bugfix: focus loss when opening file
+- other bugfixes
+
+1.2.2 (15.11.2007)
+- [Debug]->ToolbarBPP key added
+- Browser window is opened in separate thread
+
+1.2.3 (07.02.2009)
+- Paste toolbar button removed
+- Fixed: module did not unload on cm_UnloadPlugins
+
+1.2.4 (18.07.2009)
+- Unicode search
+
+1.2.5 (09.01.2011)
+- Fixed: bug with search button in QuickView mode
+- Fixed: some files with unicode paths were not opened properly
+- Fixed: status bar was not visible when using the plugin with Universal Viewer
+- Don't show search and copy buttons when using the plugin with Universal Viewer
+- Search toolbar icon replaced
+- New hotkeys: CmdZoomIn, CmdZoomOut, CmdZoomDef
+
+1.2.6 (18.12.2011)
+- Fixed: backward search did not work
+- [options]->HighlightAllMatches key added
+- x64 build

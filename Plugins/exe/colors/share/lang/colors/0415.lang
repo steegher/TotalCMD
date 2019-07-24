@@ -1,0 +1,20 @@
+; Polski
+[0415]
+btn_ok=OK
+btn_cancel=Anuluj
+btn_help=Pomoc
+btn_apply=ZatwierdŸ
+theme_group1=Informacje o schemacie:
+theme_group2=Schemat kolorów:
+theme_group3=Przyk³ad:
+theme_author=Autor:
+theme_feedback=Link:
+theme_description=Opis:
+theme_not_specified=Nieokreœlony
+theme_user=Schemat u¿ytkownika
+theme_user_desc=To nie jest t³umaczone
+error_msg1=To nie jest t³umaczone
+ftype_link=Kolor grup
+ftype_header=Kolor grup (typy plików)
+ftype_close=Zamknij
+ftype_invalid=W wybranym schemacie nie istniej¹ grupy kolorów

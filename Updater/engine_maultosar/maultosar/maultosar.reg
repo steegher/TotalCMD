@@ -1,0 +1,12 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\maultosar]
+"URL Protocol"=""
+@="URL:Maultosar Protocol"
+
+[HKEY_CLASSES_ROOT\maultosar\shell]
+
+[HKEY_CLASSES_ROOT\maultosar\shell\open]
+
+[HKEY_CLASSES_ROOT\maultosar\shell\open\command]
+@="\"C:\\maultosar.bat\" \"%1\""

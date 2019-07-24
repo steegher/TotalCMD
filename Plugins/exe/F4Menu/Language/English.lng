@@ -1,0 +1,126 @@
+English
+; For F4Menu ver 0.58
+; Creator/Translator: Shanny (shannycn@gmail.com)
+; Date: 2010-10-28
+
+; Common words
+0=Yes
+1=No
+2=OK
+3=Cancel
+4=&Apply
+5=Close
+6=Name
+7=Path
+8=Parameters
+9=Mode
+10=Extensions
+11=Icon
+12=Window
+13=Executable files (*.exe;*.bat;*.com)
+14=All files (*.*)
+
+; Main Menu
+15=Other Program...
+16=Settings...
+17=About F4Menu...
+
+; Common words 2
+18=Start Path
+19=Icon files (*.exe;*.dll;*.ico;*.icl)
+
+; Context Menu
+20=&Associate and Open
+21=&Only Open
+22=Set as &Default Editor
+23=&Dissociate
+24=&Remove
+25=&Modify...
+26=Sort by &Name
+27=Asso&ciate
+28=Always &Shown in Main Menu
+29=&More Programs
+
+; Modify Dialog
+30=F4Menu Modify Editor
+31=&Name
+32=&Path
+33=Para&meters
+34=&Open Mode
+35=&Extensions
+36=&Icon
+37=0 - Open each file separately
+38=1 - Open all files as a list
+39=&Start Path
+
+; Settings Dialog
+40=F4Menu Settings
+41=O&ptions
+42=&Add
+43=&Modify
+44=&Remove
+45=File
+46=List
+
+; About Dialog
+47=About F4Menu
+48=Main Menu
+
+; Options Dialog
+50=F4Menu Options
+51=&About
+52=&Language
+53=&Maximum number of open files (0-31)
+54=&Selection menu appears
+55=Right next of current file
+56=At mouse cursor
+57=Show &tooltips on selection menu
+58=Run mode <-> Launch key
+59=&Foreground mode (always show selection menu), otherwise launched in background mode
+60=&Background mode (only show if necessary), otherwise lauched in foreground mode
+61=Action after cancelling selection menu
+62=Break and open the &processed files
+63=B&reak and cancel all selections
+64=S&kip current file and continue with next
+65=&Unselect opened files
+66=Tooltips only
+67=Editor Info only
+68=Tooltips and Editor Info
+69=&Default open mode (Open files with default editor directly)
+
+; ToolTips
+70=Opened by system associated application
+71=Default Editor
+72=Ctrl + Enter/Click: associate and open\nEnter/Click: only open
+73=Space: open with the first matching editor
+74=Drag and drop to adjust item
+75=Right mouse click: show the context menu
+76=Choose a new program for this extension
+
+; Messages
+80=Please launch F4Menu as the following usage:\n\nF4Menu.exe [-bdfmpq] [filelist]\n-b\tForce background mode, regardless of the shortcut setting\n-d\tForce default mode, regardless of the shortcut setting\n-f\tForce foreground mode, regardless of the shortcut setting\n-m\tMenu mode, show main menu if no filelist, for create new file\n-p\tParameter mode, get file list only from parameters but not TC\n-q\tQuiet mode, exit directly without any dialog if no filelist.\nfilelist\tSpace-separated filenames\n\tThe filename which contains space should be enclosed by quota.\n\tAnd parameters -q, -m are ignored if filelist exist.\n\nOr use Total Commander shortcut key F4 to launch F4Menu.\nYou can set it via TC Configuration -> Options -> Edit/View -> Editor for F4.
+81=Please select an item.
+82=Do you really want to delete this item?
+83=Do you really want to delete all these %d items?
+84=Please Check the editor name.
+85=Cannot find the specified editor, please check the path.
+86=Too many files selected, do you want to open all of them?\n\nYes to open all selected files.\nNo to only open the first %d files.
+87=Cannot find the editor %d "%s", \n\nplease choose a new editor for "*.%s" files.
+88=The editor "%s" already exists.\nDo you want to update its existing configuration?\n\nYes to load and update the existing item.\nNo to create a new item with the same path.
+89=Cannot find the default editor, please set it again.
+
+; Modify Dialog 2
+90=&Window
+91=0 - Normal
+92=1 - Maximize
+93=2 - Minimize
+94=Icon &File
+95=&Always shown in main menu
+
+; Option Dialog 2
+100=Docked right of current file
+101=Docked in opposite panel
+102=Centered in window
+
+; Messages2
+110=Configuration of editor %d is damaged, please correct it.

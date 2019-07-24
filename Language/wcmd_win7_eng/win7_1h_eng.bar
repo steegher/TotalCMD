@@ -1,0 +1,24 @@
+[Buttonbar]
+Buttoncount=6
+button1=wcmicons.dll,15
+cmd1=%COMMANDER_PATH%\LANGUAGE\wcmd_win7_eng\win7_1_eng.bar
+iconic1=0
+menu1=Windows 7 Button Bar
+button2=
+iconic2=0
+button3=sdcpl.dll
+cmd3=control.exe /name Microsoft.BackupAndRestoreCenter
+iconic3=0
+menu3=Backup and Restore
+button4=recdisc.exe
+cmd4=recdisc.exe
+iconic4=0
+menu4=Create Recovery Disc
+button5=%systemroot%\helppane.exe
+cmd5=%systemroot%\helppane.exe -Home
+iconic5=0
+menu5=Help
+button6=msra.exe
+cmd6=msra.exe
+iconic6=0
+menu6=Windows Remote Assistance

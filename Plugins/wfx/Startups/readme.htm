@@ -1,0 +1,564 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Startups - File-system plugin for Total Commander</title>
+  <meta name="author" content="Dalai">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="icon" type="image/x-icon" href="./res/Fatcow-Farm-Fresh-Application-form.ico">
+  <link href="./res/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <div id="content">
+  <h1>Startups</h1>
+    Startups is a file-system plugin that can list, disable, analyze, edit and delete system startups that are located in the Registry or Start Menu.
+    <h2>Contents</h2>
+    <ol>
+        <li class="nav"><a href="#features">Features</a>
+          <ol>
+              <li class="nav"><a href="#generalfeat">General</a></li>
+              <li class="nav"><a href="#advancedfeat">Advanced features</a></li>
+              <li class="nav"><a href="#disadvantages">Disadvantages</a></li>
+          </ol>
+        </li>
+        <li class="nav"><a href="#sysreqs">System Requirements</a></li>
+        <li class="nav"><a href="#userinterface">The user interface</a>
+          <ol>
+              <li class="nav"><a href="#extensions">Extensions in TC panel</a></li>
+              <li class="nav"><a href="#startupstatus">Startup status check</a></li>
+              <li class="nav"><a href="#duplicatestartups">Copy or move startups</a></li>
+          </ol>
+        </li>
+        <li class="nav"><a href="#settings">Plugin settings</a>
+          <ol>
+              <li class="nav"><a href="#settingslocation">Location of plugin settings file</a>
+              <li class="nav"><a href="#settingsdetail">The settings in detail</a>
+          </ol>
+        </li>
+        <li class="nav"><a href="#exttools">Internal and external tools</a>
+          <ol>
+              <li class="nav"><a href="#toolscfg">How to configure external tools</a></li>
+              <li class="nav"><a href="#toolskeys">The keys in detail</a></li>
+              <li class="nav"><a href="#x64note">An important note on 64 bit systems</a></li>
+              <li class="nav"><a href="#xp64note">A special note on Windows XP x64 Edition</a></li>
+          </ol>
+        </li>
+        <li class="nav"><a href="#issueslimitations">Known Issues and limitations</a>
+          <ol>
+            <li class="nav"><a href="#knownissues">Known issues</a></li>
+            <li class="nav"><a href="#limitations">Limitations</a></li>
+          </ol>
+        </li>
+        <li class="nav"><a href="#faq">Frequently Asked Questions</a></li>
+        <li class="nav"><a href="#license">License</a></li>
+        <li class="nav"><a href="#thanks">Thanks to</a></li>
+        <li class="nav"><a href="#contact">Contact</a></li>
+    </ol>
+
+    <hr size="1" noshade>
+
+
+    <h2>1. Features<a name="features"></a></h2>
+    <h3>1.1. General<a name="generalfeat"></a></h3>
+      <ul>
+        <li>List system startups that are located in the Registry (HKCU, HKLM in Run and RunOnce, respectively) and Start Menu folders (All Users
+            and current user)</li>
+        <li>Disable startups so they don't start automatically, but can easily be re-enabled</li>
+        <li>Run startups manually on request</li>
+        <li>Delete startups</li>
+      </ul>Startups is - in some aspects - similar to the old <a href="http://totalcmd.net/plugring/startguard.html">StartupGuard</a>
+      plugin written by Sergey Puljajev. It uses the same approach to disable startups and has some advantages over StartupGuard, but
+      doesn't have all of the features as those of lesser importance were left out.
+
+    <h3>1.2. Advanced features<a name="advancedfeat"></a></h3>
+      <ul>
+          <li>Manage startups in 32 and 64 bit Registry branches on 64 bit Windows</li>
+          <li>Show correct executable information in the file list of Total Commander (32 bit) on Windows 64 bit, i.e. file date/time and sizes</li>
+          <li>Show information about the executable like file size, company name, file version, description and so on</li>
+          <li>Edit startups, e.g. command line parameters, name etc.</li>
+          <li>Ability to show startups with the same name in different locations as each startup will have a unique name.</li>
+          <li>Copy or move startups to a different location, even across Registry and Start Menu (with some limitations)</li>
+          <li>Unicode capable</li>
+          <li>64 Bit version to use in Total Commander x64</li>
+          <li>Translation to other languages possible</li>
+          <li>Support for custom columns (default view available)</li>
+          <li>View and edit properties specific to Start Menu shortcuts like comments and window state</li>
+          <li>Check if a startup is currently running, with matching process names and matching command lines</li>
+          <li>Jump to the startup's executable with Enter and/or Shift+Enter</li>
+      </ul>
+
+    <h3>1.3. Disadvantages<a name="disadvantages"></a></h3>
+      <ul>
+          <li>Startups in the following Registry locations are not included: RunOnceEx, RunServices and RunServicesOnce.<br>
+          I don't know whether to support RunOnceEx at all. The last two don't apply to NT based systems.</li>
+      </ul>
+
+
+    <h2>2. System Requirements<a name="sysreqs"></a></h2>
+      <ul>
+          <li>Windows 2000 or later, both 32 and 64 bit</li>
+          <li>Total Commander 7.50 or later, both 32 and 64 bit</li>
+      </ul>
+
+
+    <h2>3. The user interface<a name="userinterface"></a></h2>
+    <h3>3.1. Extensions in TC panel<a name="extensions"></a></h3>
+      <p>Since the plugin supports startups with the same name in different locations, all names must have unique file names. Hence
+      all file extensions are built from the startup location they represent, in abbreviated form. The following table shows the
+      extensions and their meaning.</p>
+      <table width="100%" border="1" cellpadding="0" cellspacing="2">
+       <tr>
+        <th scope="col" width="5%">Extension</th>
+        <th scope="col">Meaning / Startup location</th>
+       </tr>
+       <tr>
+         <td>SA</td>
+         <td>Start Menu: All Users, i.e. %AllUsersProfile%\Start Menu\Startup directory
+         </td>
+       </tr>
+       <tr>
+         <td>SU</td>
+         <td>Start Menu: Current User, i.e. %UserProfile%\Start Menu\Startup directory
+         </td>
+       </tr>
+       <tr>
+         <td>M32R</td>
+         <td>Registry: All Users, Run (32 bit), i.e.<br>
+         HKLM\Software\Microsoft\Windows\CurrentVersion\Run (32 bit Windows) or<br>
+         HKLM\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Run (64 bit Windows).
+         </td>
+       </tr>
+       <tr>
+         <td>M64R</td>
+         <td>Registry: All Users, Run (64 bit), i.e.<br>
+         HKLM\Software\Microsoft\Windows\CurrentVersion\Run (64 bit Windows only).
+         </td>
+       </tr>
+       <tr>
+         <td>M32RO</td>
+         <td>Registry: All Users, RunOnce (32 bit), i.e.<br>
+         HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnce (32 bit Windows) or<br>
+         HKLM\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\RunOnce (64 bit Windows).
+         </td>
+       </tr>
+       <tr>
+         <td>M64RO</td>
+         <td>Registry: All Users, Run (64 bit), i.e.<br>
+         HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnce (64 bit Windows only).
+         </td>
+       </tr>
+       <tr>
+         <td>UR</td>
+         <td>Registry: Current User, Run, i.e. HKCU\Software\Microsoft\Windows\CurrentVersion\Run
+         </td>
+       </tr>
+       <tr>
+         <td>URO</td>
+         <td>Registry: Current User, RunOnce, i.e. HKCU\Software\Microsoft\Windows\CurrentVersion\RunOnce
+         </td>
+       </tr>
+      </table>
+
+    <h3>3.2. Startup status check<a name="startupstatus"></a></h3>
+    <p>The check is available in the "Status" tab of the startup properties dialog. In simple terms it allows to determine whether
+    a startup is currently running, although this is not quite correct. This feature looks for active processes that match the
+    startup's executable name. Furthermore, it uses <a href="http://en.wikipedia.org/wiki/Windows_Management_Instrumentation">WMI
+    (Windows Management Instrumentation)</a> to check whether these processes match the startup's command line. When a command line
+    matches, there is a very high probability that it is the startup itself that's currently running. All matching command lines are
+    highlighted in bold.</p>
+    <p>The check for matching command lines only works if the user running the plugin has sufficient rights to open processes that
+    match the startup's executable name. Users without administrative privileges can only open their own processes, so the plugin
+    will not be able to analyze processes running in a different user context. When executing the plugin in a TC running as
+    administrator the plugin can check all processes.</p>
+    <p>Note that the check for matching command lines is not available on Windows 2000, but only on XP and higher!</p>
+
+    <h3>3.3. Copy or move startups<a name="duplicatestartups"></a></h3>
+    <p>The feature is available from the "Location" combobox of the startup properties dialog.</p>
+    <b>Move</b> a startup to a different location:<br>
+    <ol class="small">
+      <li>Select another location</li>
+      <li>Click Apply or OK</li>
+    </ol>
+    and the startup will be moved to the new location.
+    <p><b>Copy</b> a startup:</p>
+    <ol class="small">
+      <li>Select another location</li>
+      <li>Check the "Copy startup to new location" checkbox next to the combobox</li>
+      <li>Click Apply or OK</li>
+    </ol>
+    and the startup will be copied to the new location.
+    <p>No feature without some limitations ;).</p>
+    <ul>
+      <li>Properties specific to start menu startups like comments and window state can not be copied when the new location is somewhere in
+      the registry.</li>
+      <li>
+      Start menu startups that use real files (like .txt, .pdf, .exe etc) instead of shortcuts can only be copied/moved within the start
+      menu locations.</li>
+    </ul>
+
+
+    <h2>4. Plugin settings<a name="settings"></a></h2>
+      <p>You can change most of the options in the plugin's settings dialog (Alt+Enter on the "Startups" entry in TC's Network Neighborhood).<br></p>
+    <h3>4.1. Location of plugin settings file<a name="settingslocation"></a></h3>
+      <p>If you want to change any plugin settings manually you can use either</p>
+      <p><b>a)</b> Startups.ini in the plugin's directory, or</p>
+      <b>b)</b> fsplugin.ini in the directory where wincmd.ini is located (default).<br>
+      <p>Option a) is good for portable mode, option b) is useful on systems where Total Commander is installed in a directory where
+      users can't write to (like %ProgramFiles%).</p>
+      <p>
+      <b>Important</b>: If Startups.ini exists in the plugin's directory it is preferred over fsplugin.ini!</p>
+      <p>The full path of the INI file currently in use is shown in the settings dialog. Furthermore there is a button
+      that allows the user to open the plugin settings file in the editor defined in TC, so it can be edited directly without the
+      need to navigate to it by hand.</p>
+    <h3>4.2. The settings in detail<a name="settingsdetail"></a></h3>
+    <p>The settings are explained in the Startups.sample.ini file, but they're listed here for the sake of completeness.</p>
+      <p><b>Section [Startups]</b></p>
+      <table width="100%" border="1" cellpadding="0" cellspacing="2">
+       <tr>
+        <th scope="col" width="28%">Setting and default</th>
+        <th scope="col">Description</th>
+       </tr>
+       <tr>
+         <td>ActionEnter = 0<br>
+             ActionShiftEnter = 3
+         </td>
+         <td>Define what will happen when ENTER (ActionEnter) or SHIFT+ENTER (ActionShiftEnter) is pressed on a startup:<br>
+             <b class="col">0</b> - Toggle the state of startups, i.e. enable or disable them<br>
+             <b class="col">1</b> - Show startup properties, the same as calling the properties with Alt+Enter<br>
+             <b class="col">2</b> - Run the startup<br>
+             <b class="col">3</b> - Go to the startup's executable location in current or new tab, depending on
+             ActionEnterNewTab/ActionShiftEnterNewTab settings.
+         </td>
+       </tr>
+       <tr>
+         <td>ActionEnterNewTab = 1<br>
+             ActionShiftEnterNewTab = 1
+         </td>
+         <td><b class="col">1</b> - Open a new tab on ENTER or SHIFT+ENTER<br>
+             <b class="col">0</b> - Don't open a new tab, i.e. jump to the startup's executable in current tab
+         </td>
+       </tr>
+       <tr>
+         <td>AllowDeleteInPanel = 1</td>
+         <td><b class="col">1</b> - Allow deletion of startups in TC's file panel<br>
+             <b class="col">0</b> - Disable deletion of startups in TC's file panel. Note that TC will ask for confirmation if F8/DEL is pressed
+         in the file list, but the plugin will not actually delete the startup. Startups can still be deleted via the startup properties dialog.
+         </td>
+       </tr>
+       <tr>
+         <td>LoadCustomColumns = 0</td>
+         <td><b class="col">1</b> - Automatically load custom columns view when entering the plugin. Note that this setting only affects
+         the default custom columns view which this plugin provides! More specifically the setting controls whether the plugin
+         reports a custom columns default view to TC or not.<br>
+             <b class="col">0</b> - Don't report a default view to TC. See <a href="#faq">FAQ section</a> on how to completely disable custom
+         columns view</td>
+       </tr>
+       <tr>
+         <td>AddTxtExtensionOnDownload = 0</td>
+         <td><b class="col">1</b> - Append an additional '.txt' extension when a startup "file" is downloaded. This is a way to control
+         whether the startup "files" are loaded into TC's Lister plugins (if any are installed).<br>
+             <b class="col">0</b> - Don't append '.txt' extension.</td>
+       </tr>
+       <tr>
+         <td>AutoRefreshStatus = 0</td>
+         <td><b class="col">1</b> - Automatically refresh the startup status when switching to "Status" tab in the startup
+                                    properties dialog. Since the status determination uses WMI it may take a few seconds to
+                                    complete.<br>
+             <b class="col">0</b> - Don't refresh status automatically.</td>
+       </tr>
+       <tr>
+         <td>VistaStyleFileDialogs = 1</td>
+         <td><b class="col">1</b> - Use Vista style open/save dialogs. They have a breadcrumb bar, but an (IMO) ugly directory tree.<br>
+             <b class="col">0</b> - Use open dialogs from XP and earlier Windows versions with the places bar on the left.</td>
+       </tr>
+       <tr>
+         <td>ShowDisabledIcon = 1</td>
+         <td><b class="col">1</b> - Show a stop icon instead of the executable's icon when a startup is disabled<br>
+             <b class="col">0</b> - Show startup's executable icon even when a startup is disabled</td>
+       </tr>
+       <tr>
+         <td>ShowDisabledExtension = 1</td>
+         <td><b class="col">1</b> - Show an additional extension ".Disabled" when a startup is disabled<br>
+             <b class="col">0</b> - Don't change the file name of disabled startups</td>
+       </tr>
+       <tr>
+        <td>Monitor = 0</td>
+        <td><b class="col">0</b> - Show all plugin dialogs/windows on the active monitor, i.e. the monitor TC is on.<br>
+            <b class="col">1..4</b> - Show all dialogs on the primary, secondary, tertiary or quaternary monitor, respectively.<br>
+            Note: If you specify an invalid monitor, the value will be reset to 0, i.e. the active monitor will be used instead.
+        </td>
+       </tr>
+       <tr>
+         <td>Language = English.lng</td>
+         <td>Specifies the language file to use by the plugin. Note: Strings missing in the specified language file are replaced
+         with default English ones!</td>
+       </tr>
+      </table>
+
+      <br>
+      <p><b>Section [Startups.Tools]</b></p>
+      <table width="100%" border="1" cellpadding="0" cellspacing="2">
+       <tr>
+        <th scope="col" width="20%">Setting and default</th>
+        <th scope="col">Description</th>
+       </tr>
+       <tr>
+        <td>ShowIcons = 1</td>
+        <td><b class="col">1</b> - Show icons in the list of tools. This might slow down the list's opening operation because the plugin
+        extracts the icon of every internal and external tool. Disable this setting if that's the case.<br>
+            <b class="col">0</b> - Don't show icons in the list of tools.</td>
+       </tr>
+       <tr>
+        <td>AutoDetectArch = 1</td>
+        <td><b class="col">1</b> - Automatically determine the architecture of all external tools. This adds some comfort to external
+          tools management without having to check whether an executable is x86 or x64. However, it requires the plugin to
+          open every external tool's executable file which can cause slowdowns by anti-virus software and the like.<br>
+            <b class="col">0</b> - Disable automatic architecture detection. If this feature is disabled, the architecture of every external
+            tools must be set in Startups.Tools section using the x64 key (see section <a href="#toolskeys">The keys in detail</a>)
+        </td>
+       </tr>
+      </table>
+
+
+    <h2>5. Internal and External Tools<a name="exttools"></a></h2>
+      <p>With this feature you can</p>
+      <ul class="small">
+        <li>view the shortcut properties of Start Menu startups (if it uses a shortcut)</li>
+        <li>jump to the registry key of Registry startups in RegEdit</li>
+        <li>view the startup executable's properties</li>
+        <li>view the startup executable in TC's Lister, including its plugins like
+          <a href="http://www.totalcmd.net/plugring/fileinfo.html">FileInfo</a> or <a href="http://www.totalcmd.net/plugring/peviewer.html">PEViewer</a></li>
+        <li>open the startup executable in any external tool like anti-virus scanner, the
+          <a href="https://www.virustotal.com/documentation/desktop-applications/">VirusTotal Uploader</a>, a web browser,
+          a hex editor, a debugger and so on</li>
+      </ul>
+      <p>This greatly simplifies the analysis of (unknown) startups and their executables, especially such from vendors that are unable
+      or unwilling to give their startups meaningful names and/or descriptions.</p>
+
+    The first four items mentioned above are internal tools and are always available, provided that the startup executable is found,
+    of course.<br>
+    The "Jump to registry key in RegEdit" feature makes use of an external tool (JumpRegEdit.exe), which is part of the distribution package.
+    You can delete that file if you don't need the feature. You can even replace it with your own tool (must have the same name) that
+    takes two parameters: registry key and value name.
+
+    <h3>5.1. How to configure external tools<a name="toolscfg"></a></h3>
+      <p>Create a new section named <b>[Startups.Tools]</b> in the plugin's INI file. See section <a href="#settings">Plugin settings</a>
+      above on how to find the correct INI file.</p>
+
+      <p>There can be several keys in this section:
+        <p class="codebox">
+        n_Name<br>
+        n_File<br>
+        n_Params<br>
+        n_x64<br>
+        n_WWW<br>
+        n_Shortcut</p>
+      where <b>n</b> is a number from 1 to 15 (currently).
+
+      <p>The values of some keys can contain the following placeholders:
+        <table border="1" width="65%">
+         <tr><th scope="col">Placeholder</th>
+         <th scope="col">is replaced with</th>
+         <th scope="col">Valid in key(s)</th>
+         </tr>
+         <tr>
+          <td>{FileName}</td>
+          <td>the fully-qualified path of the startup executable</td>
+          <td>Params only</td>
+         </tr>
+         <tr>
+          <td>{FileNameOnly}</td>
+          <td>the file name only, i.e. path removed</td>
+          <td>Params and WWW</td>
+         </tr>
+         <tr>
+          <td>{StartupName}</td>
+          <td>the startup name</td>
+          <td>WWW only</td>
+         </tr>
+        </table>
+      Please note that case matters here, so {filename} is NOT replaced!
+      <p>Quotes are automatically added to the File key value only, so they must be set explicitly in all other key values if
+      they contain spaces!</p>
+
+    <h3>5.2. The keys in detail<a name="toolskeys"></a></h3>
+      <table border="1">
+       <tr>
+        <th scope="row" width="10%">Name</th>
+        <td>A string which will be shown in the list of external tools. If it's empty the value of <b class="col">File</b> is used
+        instead (path removed, i.e. file name only). You can use an ampersand here to manually define a character that will be used as
+        keyboard hotkey, e.g. "&amp;Firefox" will create an item that can be called by pressing "f" when the list of tools is opened.</td>
+         </tr>
+         <tr>
+          <th scope="row">File</th>
+          <td>The path to the external tool. It can contain either a fully-qualified path or a simple file name that is located
+          somewhere in the %PATH%. It can also contain environment variables like %ProgramFiles% or %SystemRoot% and so on.</td>
+         </tr>
+         <tr>
+          <th scope="row">Params</th>
+          <td>A string that contains any command-line parameters for <b class="col">File</b>. The value can contain environment
+          variables as well.</td>
+         </tr>
+         <tr>
+          <th scope="row">x64</th>
+          <td>A Bool (either 0 or 1) that defines the architecture of <b class="col">File</b>.<br>
+          <b>0</b> defines that File is a 32 bit executable<br>
+          <b>1</b> defines that File is a 64 bit executable<br>
+          Please note that this key is not required as long as AutoDetectArch is enabled in [Startups.Tools] section.</td>
+         </tr>
+         <tr>
+          <th scope="row">WWW</th>
+          <td>A string that can contain a web address that will be opened in the system's default web browser. Characters forbidden
+          in URLs will be replaced by %hexvalue! This applies to the placeholders only, not the whole WWW string, of course.</td>
+         </tr>
+         <tr>
+          <th scope="row">Shortcut</th>
+          <td>A string that can contain any shortcut which is assigned to this external tool. Shortcuts allow quick access to internal
+          and external tools using the keyboard. They are useful if you don't want to use the button to open the list of tools, too.<br>
+        <b>Important: </b>Currently the shortcuts don't support special keys like Enter, Numpad keys and so on.
+        In other words, they are limited to:
+        <ul class="small">
+          <li class="nav">F1 to F12</li>
+          <li class="nav">A to Z</li>
+          <li class="nav">0 to 9</li>
+          <li class="nav">Alt, Shift, Ctrl</li>
+        </ul>
+        The syntax is the same as in TC itself, for example "CA+F5" means Ctrl+Alt+F5. See section "Settings in the file
+        wincmd.ini" of TC's help. The shortcut F3 is pre-defined and assigned to the function "View executable in Lister".</td>
+        </tr>
+      </table>
+    <p>If <b>File</b> is not found at runtime the item of this external tool will be disabled. The minimal set of keys required for a
+    working external tool consists of <b>Name</b> and <b>WWW</b> or <b>File</b> and <b>Params</b>.</p>
+    <p>See Startups.sample.ini, section [Startups.Tools], for some examples.</p>
+
+    <h3>5.3. An important note on 64 bit systems<a name="x64note"></a></h3>
+    <p>You may have wondered why there is an x64 key and the AutoDetectArch setting which the plugin uses to determine the
+    architecture of external tools.</p>
+
+    <p>All 32 bit applications are subject to file-system redirection because of WOW64. There are numerous articles on the
+    internet about this topic, see for example <a href="http://en.wikipedia.org/wiki/WoW64">Wikipedia</a> for an outline.
+    When a 32 bit application accesses %SystemRoot%\system32 it is redirected to %SystemRoot%\SysWOW64 by the system.</p>
+
+    <p>Many startup executables are located in the %SystemRoot%\system32 directory and the startup points to this path in such
+    cases. Now, with that in mind, what would happen if a 32 bit external tool is launched with "%SystemRoot%\system32\somefile.exe"
+    as parameter? It would load the "wrong" file, i.e. %SystemRoot%\SysWOW64\somefile.exe. There are even cases where there's no
+    file with the same name in %SystemRoot%\SysWOW64 but only %SystemRoot%\system32, so 32 bit external tools would not be able to
+    load the startup executable at all.</p>
+
+    <p>Therefore Startups replaces "%SystemRoot%\system32" with "%SystemRoot%\SysNative" in the paths of all startup
+    executables if the external tool's executable is a 32 bit binary, and the startup is not located in Wow6432Node registry key.
+    Furthermore, Startups replaces "%SystemRoot%\system32" with "%SystemRoot%\SysWOW64" in the paths of all startup executables
+    if the startup is located in Wow6432Node registry key and the external tool's executable is a 64 bit binary.</p>
+
+    <p>With this approach all internal and external tools always load the correct file, regardless of the architecture of TC,
+    this plugin, the external tool or the startup itself.</p>
+
+    <h3>5.4. A special note on Windows XP x64 Edition<a name="xp64note"></a></h3>
+      <p>By default, there is no %SystemRoot%\SysNative pseudo-directory available for 32 bit applications on this OS. That may
+      result in non-working internal and external tools. You have two options here:</p>
+      <ul>
+        <li>Get a <a href="http://support.microsoft.com/kb/942589">patch from Microsoft</a><br>
+           Unfortunately this patch is NOT publicly available. There may be other sources for this hotfix, but you don't want to
+           install patches from an unknown source, do you?
+        </li>
+        <li>Create an NTFS junction from %SystemRoot%\system32 to %SystemRoot%\SysNative. You can do this with tools like
+          <a href="http://technet.microsoft.com/de-de/sysinternals/bb896768.aspx">Sysinternals Junction</a> or
+          <a href="http://www.totalcmd.net/plugring/ntfslinks.html">NTFS Links</a>
+        </li>
+      </ul>
+      <p>Sysinternals Junction:</p>
+      <ol>
+        <li>Launch a 64 bit command prompt (CMD) and navigate to the folder where junction.exe is located</li>
+        <li>type "junction %SystemRoot%\SysNative %SystemRoot%\System32" (without the quotes) and hit Enter</li>
+        <li>the tool should say something like
+        <p class="codebox">Created: C:\WINDOWS\SysNative<br>
+        Targetted at: C:\WINDOWS\system32</p></li>
+      </ol>
+      <p>NTFS Links:</p>
+      <ol>
+        <li>Install the tool according to its help file, e.g. on a button or start menu in TC</li>
+        <li>Navigate to %SystemRoot% in both of TC's panels</li>
+        <li>Set the cursor on system32 directory (doesn't matter if left or right panel)</li>
+        <li>Call the tool from the button/start menu create in first step</li>
+        <li><b>Important</b>: Replace the "*.*" at the end of the target path with "SysNative" so that the path points to "C:\Windows\SysNative"</li>
+        <li>Confirm the creation of the junction</li>
+      </ol>
+
+
+    <h2>6. Known issues and limitations<a name="issueslimitations"></a></h2>
+    <h3>6.1. Known Issues<a name="knownissues"></a></h3>
+    <ul>
+      <li>The feature "Configure" of <a href="http://www.totalcmd.net/plugring/tc_plugman.html">TC Plugins Manager</a> does not
+      work with this plugin. This is a limitation of TC Plugins Manager. It calls only the ANSI functions exported by the
+      plugins. Since Startups is a Unicode only plugin (regarding the relevant functions) it does not work.
+      </li>
+      <li>
+      The shortcuts assigned to external tools items are not translated. Currently I don't think I will translate them as it is
+      quite some work for relatively small benefit.
+      </li>
+      <li>
+      When trying to save a Start Menu startup containing a command line without a path specification that points to an executable
+      that doesn't exist anywhere in the directories specified by %PATH% variable, you may get an error message
+      "[EOleSysError: Invalid argument (0x80070057)]".<br>
+      Example: "calc.exe" will work while "foo.exe" will not unless "foo.exe" exists somewhere in the %PATH%.<br>
+      The issue lies somewhere in Windows' IShellLink interface, but the exact cause is still unknown. Hence, it can't be fixed (yet).<br>
+      However, you can work around it by specifying an existing file and/or putting a path in front of the file name.
+      </li>
+    </ul>
+    <h3>6.2. Limitations<a name="limitations"></a></h3>
+    <ul>
+      <li>On Windows 2000 the status check in the startup properties dialog is limited to the check for matching process names;
+      the check for matching command lines is not performed because it's not available (via WMI).
+      </li>
+      <li>There are tables in the startup properties dialog that can be sorted. The display of the sort order - the little sort arrow
+       in the column headers - is not available on Windows 2000, but only on XP and higher.
+      </li>
+    </ul>
+
+    <h2>7. Frequently Asked Questions<a name="faq"></a></h2>
+    <p><strong>Why does the plugin load the custom columns view although the option "Load Custom Columns View upon entering
+       the plugin" is disabled?</strong></p>
+    <p>The option controls whether the plugin reports a default custom columns view to TC or not. In case the default custom
+       columns view is changed by the user, TC switches to this custom columns view automatically when the plugin is entered,
+       regardless of the plugin's setting, because the option "Switch to this view when entering the plugin" in TC's custom
+       columns view is enabled by default. So, to really disable the loading of custom columns view the option "Switch to this
+       view when entering the plugin" in TC's custom columns view must be disabled as well.
+    </p>
+    <br>
+    <p><strong>Why does the properties dialog and TC Lister show "C:\Windows\SysNative" as location although the startup
+    properties show "C:\Windows\system32"?</strong></p>
+    <p>Take a look at <a href="#x64note">An important note on 64 bit systems</a> section above for a detailed explanation.</p>
+    <br>
+    <p><strong>I get an error message "[EOleSysError: Invalid argument (0x80070057)]" when trying to save/copy a startup. Why? How to fix it?</strong></p>
+    <p>Take a look at <a href="#knownissues">Known Issues</a> section above.</p>
+
+    <h2>8. License<a name="license"></a></h2>
+    <p>The plugin's icon "Fatcow-Farm-Fresh-Application-form", part of the "Farm-Fresh Web Icons" package:<br>
+    (C) <a href="http://www.fatcow.com/free-icons">Fatcow Web Hosting</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC Attribution 3.0</a><br>
+    <p>All other icons (except the Delphi main icon) were made by my brother.</p>
+    <br>
+    <p>This software is provided "as is". No warranty provided. You use this program at your own risk. The author will not
+    be responsible for data loss, damages, etc. while using or misusing this software.</p>
+    <p>The software must not be modified, you may not decompile or disassemble it.</p>
+    <p>This plugin is copyrighted freeware.</p>
+
+    <h2>9. Thanks to<a name="thanks"></a></h2>
+    <ul>
+      <li>Christian Ghisler, the author of Total Commander, for developing this great program that I use every day</li>
+      <li>Sergey Puljajev for making the StartupGuard plugin. It would have been much more work to make my own plugin
+      without it.</li>
+      <li>The members of the <a href="http://www.delphipraxis.net">Delphi-PRAXiS forum</a> that helped me understand and fix some things</li>
+    </ul>
+
+    <h2>10. Contact<a name="contact"></a></h2>
+    <p>If you have found a bug, have a suggestion, improvement, criticism, translation, you can contact me, Dalai,
+    in English or German, at:<br>
+    Mail: <a href="mailto:dalai82@gmx.net">dalai82@gmx.net</a></p>
+
+    <p>Please put "Startups" somewhere in the subject.</p>
+
+    <p>There is a discussion thread in the official TC forum which can be used, too:
+    <a href="http://ghisler.ch/board/viewtopic.php?t=42374">http://ghisler.ch/board/viewtopic.php?t=42374</a></p>
+  </div>
+</body>
+</html>

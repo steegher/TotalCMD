@@ -1,0 +1,8 @@
+    /**
+     * @event buttonClose.action 
+     * @event close 
+     */
+    function closeUpdater(){   
+        Logger::info('Close updater');
+        exit;
+    }

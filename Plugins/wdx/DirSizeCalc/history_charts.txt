@@ -1,0 +1,25 @@
+Version 1.10
+------------
+ADDED     Added support for .. items
+FIXED     High dpi mode e.g. 120pi or 144 dpi should look just fine. 
+CHANGED   The way hotkeys are handled has been changed as the plugin could not be started when another plugin was displayed and user pressed 4. However it's unfortunately not a full fix as you have to press 4 twice in some cases. This includes opening the Lister not using the keyboard and then cycle through plugins by pressing 4.
+ADDED     The current path is now displayed in a new area above the file list.     
+ADDED     The number of files in a folder is now displayed next to the size. This cannot be configured at the moment. A setting will be added later.
+ADDED     Pressing delete moves an item to the recycle bin. If moving to bin isn't possible the item will be deleted. A confirmation dialog is displayed in all cases.
+ADDED     It's now possible to navigate folders inside the plugin by pressing return or performing a doubleclick to go down or by pressing backspace to go up.
+
+
+Version 1.01
+------------
+FIXED     Improved handling of reparse points. However it cannot be configured at this time.
+FIXED     In some cases drawing items in the list was messed up.
+FIXED     The focus is now set to the listbox when the plugins receives the focus.
+FIXED	  A concurrency issue could crash the plugin when opening and closing the plugin very quickly.
+FIXED     The current system colors are now considered. This should improve readability when using bright text on dark background Windows color settings.
+FIXED     Plugin window could not be closed when the listbox had the focus and user pressed ESC.
+FIXED	  Renaming this file to 'history_charts.txt' in order to avoid conflicts with the content plugin in the same dir.
+
+
+Version 1.00
+------------
+Initial release

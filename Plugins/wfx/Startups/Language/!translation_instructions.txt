@@ -1,0 +1,22 @@
+If you want to make a translation of this plugin to your own language:
+
+1. Make a copy of "English.lng" to "<your_language>.lng".
+   Please use the language's English name for the file name!
+
+2. Open "<your_language>.lng" in your favorite editor.
+   The .lng file should be encoded in Unicode (UTF-16).
+
+3. Translate all strings.
+   Please ensure you don't have duplicate keyboard shortcuts for labels,
+   buttons etc. within the same dialog!
+
+4. Add the language's name in the native language to section [Language].
+4.b. (optional) Add your name, nick and/or the date of the translation
+                to section [Language].
+
+5. Repeat steps 2 and 3 with pluginst.inf and Startups.lng (custom columns).
+   Note: These two files should be encoded in ANSI.
+
+6. Send the new language files to the e-mail address mentioned in readme.txt
+   or post a link to the file in the official discussion thread:
+   http://ghisler.ch/board/viewtopic.php?t=40155

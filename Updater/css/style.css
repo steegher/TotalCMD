@@ -1,0 +1,116 @@
+.view {
+    background: url("https://i.imgur.com/h6qW8Kb.jpg")no-repeat center center;
+    background-size: cover;
+}
+@media (min-width: 768px) {
+    .view {
+        overflow: visible;
+        margin-top: -56px;
+    }
+}
+.navbar {
+    background-color: rgba(0,0,0,0.2);
+}
+
+.top-nav-collapse {
+    background-color: rgba(0,0,0,0.7);
+}
+
+@media only screen and (max-width: 1080px) {
+    .navbar {
+        background-color: #4285F4;
+    }
+}
+
+html,
+body,
+header,
+.view {
+  height: 100%;
+}
+
+.navbar-brand {
+    float: left;
+    height: 50px;
+    padding: 15px;
+    font-size: 22px;
+    line-height: 20px
+}
+
+.navbar-brand:focus,.navbar-brand:hover {
+    text-decoration: none
+}
+
+.navbar-brand>img {
+    display: block
+}
+.navbar>.container .navbar-brand,.navbar>.container-fluid .navbar-brand {
+        margin-left: -15px
+    }
+    .navbar-default .navbar-brand {
+    color: #777
+}
+
+.navbar-default .navbar-brand:focus,.navbar-default .navbar-brand:hover {
+    color: #5e5e5e;
+    background-color: transparent
+}
+.navbar-inverse .navbar-brand,.navbar-inverse .navbar-brand:focus,.navbar-inverse .navbar-brand:hover {
+    color: #fff;
+    transition: .3s
+}
+
+#blink {
+    -webkit-animation: blink 2s linear infinite;
+    animation: blink 2s linear infinite;
+    font-family: 'Russo One',sans-serif;
+    color: #14A5F4;
+    right: 5px;
+    font-size: 25px;
+    top: -5px
+}
+
+@-webkit-keyframes blink {
+    50% {
+        color: #14a5f4
+    }
+
+    100%,51% {
+        color: rgba(20,165,244,0)
+    }
+}
+
+@keyframes blink {
+    50% {
+        color: #14a5f4
+    }
+
+    100%,51% {
+        color: rgba(20,165,244,0)
+    }
+}
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+  bottom: .5em;
+}
+.btn-rounded {
+    -webkit-border-radius: 10em;
+    border-radius: 10em
+}
+
+.btn-white {
+  color: black !important;
+}
+
+h6 {
+  line-height: 1.7;
+}

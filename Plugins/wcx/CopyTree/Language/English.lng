@@ -1,0 +1,31 @@
+; CopyTree 1.2.5.272, hardcoded messages
+
+[Copy Tree]
+; English messages (1252) - be careful with format parameters like "%s" and "%X"
+1=&Yes
+2=&No
+3=Can&cel
+4=Yes to &All
+5=N&o to All
+6=&OK
+7=Copy selected objects &to:
+8=Move selected objects &to:
+9=Select tree &level to copy:
+10=Only files of this t&ype:
+11=Copy the top file over the bottom one:
+12=Ask for options &next time
+13=Ask for options when &Win key is down
+14=Ask for options &every time
+15=&Save
+16=Copy Tree Configuration
+17=Do you want to abort operation?
+18=Unable to copy file with another base path.
+19=Skip this file and continue?
+20=Some items weren't copied/moved successfully:
+21=&Reload
+22=Cop&y timestamps of directories
+23=Copying timestamps of directories...
+24=Move the top file over the bottom one:
+25=&Delete empty source dirs on move
+26=Removing empty source directories...
+27=Copy &all three timestamps

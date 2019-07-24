@@ -1,0 +1,25 @@
+Version 0.4.0 [2015-11-20]
+[+]  Added another Russian translation, thanks to alex3f!
+[+]  Added option Monitor to [Startups] section. See readme for details
+[*]  Fixed wrong placement of dialogs on multi-monitor systems.
+     Previously the dialogs were placed on the primary monitor, now they
+     will be placed on the active monitor (the one TC is displayed on)
+[+]  Plugin settings dialog: The translator's name (or more precisely
+     the contents of the Translator key) of every language file will now
+     be shown next to the language file name
+
+Version 0.3.1 [2015-07-21]
+[!]  No public release!
+[+]  Startup properties dialog: Added button to browse for a file, with
+     options to replace the command line, append it to the command line
+     or insert it at the cursor position
+[+]  Startup properties dialog: Added warning that is shown in case the
+     executable is not found
+[+]  Added option to use Vista style open dialogs, see readme for explanation
+[+]  Added Russian translation, thanks to Sergey Alekseev!
+[+]  Added Danish translation, thanks to petermad!
+[*]  Made all dialogs wider to account for longer translations
+[*]  Return icons to TC in requested size. Previously, the plugin's internal
+     icons were always large, all others were small.
+[*]  Show empty directory in case no startups are found
+[*]  Handle some more errors to avoid some exceptions

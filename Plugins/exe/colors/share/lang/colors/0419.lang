@@ -1,0 +1,20 @@
+; Russian (Encoding: Windows-1251)
+[0419]
+btn_ok=ОК
+btn_cancel=Отмена
+btn_help=Справка
+btn_apply=При&менить
+theme_group1=Информация о схеме:
+theme_group2=Цветовая схема:
+theme_group3=Образец:
+theme_author=Автор:
+theme_feedback=Связь:
+theme_description=Описание:
+theme_not_specified=Не указано
+theme_user=Пользовательская
+theme_user_desc=Автоматически создана из пользовательских настроек
+error_msg1=Данное приложение может быть запущено только из Total Commander (версии 7.0 или выше)
+ftype_link=Цветовые группы
+ftype_header=Цветовые группы (типы файлов)
+ftype_close=Закрыть
+ftype_invalid=В выбранной схеме нет цветовых групп

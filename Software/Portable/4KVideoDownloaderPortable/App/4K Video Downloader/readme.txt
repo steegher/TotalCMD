@@ -1,0 +1,16 @@
+About
+=====
+
+4K Video Downloader allows to download video or audio content from
+YouTube and other services and to save it on your computer.
+
+Copyright (C) 2018 Open Media LLC.
+All rights reserved.
+
+
+License information
+===================
+
+See the file "eula" for terms & conditions for usage.
+See the file "thirdparty" for information about third-party software.
+All trademarks are property of their respective holders.

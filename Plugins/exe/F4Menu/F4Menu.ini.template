@@ -1,0 +1,93 @@
+[General]
+Count=13
+[Program0]
+Name=&UltraEdit-32
+Path=%ProgramFiles%\UltraEdit-32\uedit32.exe
+Param=
+Start=%ProgramFiles%\UltraEdit-32\
+Mode=0
+Type=exe,dll,
+[Program1]
+Name=&EmEditor
+Path=%ProgramFiles%\EmEditor\emeditor.exe
+Param=/fh
+Start=%ProgramFiles%\EmEditor\
+Mode=0
+Type=C,CPP,H,hpp,ini,txt,,bat,htm,
+[Program2]
+Name=Microsoft Office &Access
+Path=%ProgramFiles%\Microsoft Office\OFFICE11\MSACCESS.EXE
+Param=
+Start=%ProgramFiles%\Microsoft Office\OFFICE11\
+Mode=0
+Type=md?,adp,
+[Program3]
+Name=Microsoft Office &Excel
+Path=%ProgramFiles%\Microsoft Office\OFFICE11\EXCEL.EXE
+Param=
+Start=%ProgramFiles%\Microsoft Office\OFFICE11\
+Mode=0
+Type=xl*,csv
+[Program4]
+Name=Microsoft Office &PowerPoint
+Path=%ProgramFiles%\Microsoft Office\OFFICE11\POWERPNT.EXE
+Param=
+Start=%ProgramFiles%\Microsoft Office\OFFICE11\
+Mode=0
+Type=ppt,pps,
+[Program5]
+Name=Microsoft Office &Visio
+Path=%ProgramFiles%\Microsoft Office\Visio11\VISIO.EXE
+Param=
+Start=%ProgramFiles%\Microsoft Office\Visio11\
+Mode=0
+Type=vs*,v?x
+[Program6]
+Name=Microsoft Office &Word
+Path=%ProgramFiles%\Microsoft Office\OFFICE11\WINWORD.EXE
+Param=
+Start=%ProgramFiles%\Microsoft Office\OFFICE11\
+Mode=0
+Type=doc,rtf,dot,
+[Program7]
+Name=Media Player Classic
+Path=%ProgramFiles%\Windows Media Player\wmplayer.exe
+Param=/prefetch:1
+Start=%ProgramFiles%\Windows Media Player\
+Mode=1
+Type=wmv,mpg,avi
+[Program8]
+Name=Adobe &Reader
+Path=%ProgramFiles%\Adobe\Acrobat 7.0\Reader\AcroRd32.exe
+Param=
+Start=%ProgramFiles%\Adobe\Acrobat 7.0\Reader\
+Mode=0
+Type=pdf
+[Program9]
+Name=Adobe &Photoshop
+Path=%ProgramFiles%\Adobe\Photoshop CS\PHOTOSHOP.EXE
+Param=
+Start=%ProgramFiles%\Adobe\Photoshop CS\
+Mode=0
+Type=psd,bmp
+[Program10]
+Name=A&CDSee
+Path=%ProgramFiles%\ACDSee\ACDSee.exe
+Param=
+Start=%ProgramFiles%\ACDSee\
+Mode=1
+Type=bmp,jpg,gif
+[Program11]
+Name=Virtual &DAEMON Manager
+Path=%ProgramFiles%\DAEMON Tools\daemon.exe
+Param=-mount 0,
+Start=%ProgramFiles%\DAEMON Tools\
+Mode=0
+Type=iso,ccd,cur,isz,nrg
+[Program12]
+Name=NOTEPAD
+Path=NOTEPAD.EXE
+Param=
+Start=%ProgramFiles%\DAEMON Tools\
+Mode=0
+Type=ini,LNG,

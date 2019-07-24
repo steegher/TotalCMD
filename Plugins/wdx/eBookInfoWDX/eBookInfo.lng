@@ -1,0 +1,31 @@
+[rus]
+Author=Автор(ы)
+Author Lastname=Автор фамилия
+Author Firstname=Автор имя
+Author Middlename=Автор отчество
+Title=Название
+Date=Дата
+Publisher=Издатель
+Publish date=Дата издания
+Sequence=Серия
+Sequence number=Номер в серии
+ISBN=ISBN
+Genres=Жанры
+Language=Язык
+Language Orig=Язык оригинала
+
+[example]
+Author=Author
+Author Lastname=Author Lastname
+Author Firstname=Author Firstname
+Author Middlename=Author Middlename
+Title=Title
+Date=Date
+Publisher=Publisher
+Publish date=Publish date
+Sequence=Sequence
+Sequence number=Sequence number
+ISBN=ISBN
+Genres=Genres
+Language=Language
+Language Orig=Language Orig
