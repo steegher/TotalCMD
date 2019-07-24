@@ -1,2 +1,1 @@
-# TotalCMD
-Total Commander Maultosar Edition
+# Total Commander Maultosar Edition
